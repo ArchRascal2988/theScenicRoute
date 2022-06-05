@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from 'react';
 
 //This will stay most likely
 import mapboxgl from 'mapbox-gl';
+import MapboxDraw from '@mapbox/mapbox-gl-draw'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
@@ -25,17 +26,28 @@ useEffect(() => {
   center: [lng, lat],
   zoom: zoom
   
-  });
+  })
   
-    map.current.addControl(new mapboxgl.GeolocateControl({trackUserLocatoin: false}), 'top-right');
+  
+    map.current.addControl(new mapboxgl.GeolocateControl({trackUserLocatoin: false}), 'top-right').addControl(new mapboxgl.AttributionControl());
+
+    const draw= new MapboxDraw({
+        displayControlsDefault: false,
+        controls:{
+            point: true,
+            trash: true
+        },
+        defaultMode: 'draw_point'
+    });
+    map.current.addControl(draw);
   });
 //end of nonsense
+
+
 
   return (
     <div>
         <div ref={mapContainer} className="map-container" />
-        <button id="addPoint" >Add a Point</button>
-        <button id="addRoute" >Add a Route</button>
     </div>
   )
     
