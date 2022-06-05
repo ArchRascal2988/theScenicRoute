@@ -8,31 +8,25 @@ const resolvers = {
             return User.find({}).populate('routes')
            ;
         },
-        user: async (parent, {userId}) => {
-            return User.findOne({_id: userId}).populate('routes')
-            .populate({
-                path: 'routes',
-                populate:'tags'
-            })
-            .populate({
-                path: 'routes',
-                populate: 'notes'
-            })
+        user: async (parent, args) => {
+            return User.findById(args.id).populate('routes')
         },
         me: async (parent, args, context)=>{
             if(context.user){
                 return User.findOne({_id: context.user._id}).populate('routes')
-                .populate({
-                    path: 'routes',
-                    populate:'tags'
-                })
-                .populate({
-                    path: 'routes',
-                    populate: 'notes'
-                });
+          ;
             }
             throw new AuthenticationError('You need to be logged in!')
         },
+        routes: async () =>{
+            return Route.find().populate('Tag').populate('Note')
+        },
+        // locationRoutes: async () =>{
+        //     return Route.find({ geometry: {$gte: YOUR LOCATION, $lte: YOURLOCATION}})
+        // },
+        route: async(parent, args)=>{
+            return Route.findById(args.id).populate('Tag').populate('Note')
+        }
     },
     mutation:{
         addUser: async  (parent, {name, email, password}) => {
