@@ -55,6 +55,7 @@ const finiHandler= (e) =>{
   e.preventDefault();
 
   console.log(geoData);
+  
 };
 
   return (
