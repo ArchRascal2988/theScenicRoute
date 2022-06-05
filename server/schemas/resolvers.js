@@ -28,7 +28,7 @@ const resolvers = {
             return Route.findById(args.id).populate('Tag').populate('Note')
         }
     },
-    mutation:{
+    Mutation:{
         addUser: async  (parent, {name, email, password}) => {
             const user = await User.create({ name, email, password});
             const token = signToken(user);
@@ -49,7 +49,7 @@ const resolvers = {
       
             const token = signToken(user);
             return { token, user };
-          },
+        }
     }
 };
 

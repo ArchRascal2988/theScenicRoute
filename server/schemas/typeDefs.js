@@ -28,7 +28,7 @@ type Route {
 type Note {
   notepoints:[String]
   image:String
-  content:String
+  content:String!
   routeId:Route!
 }
 
@@ -41,7 +41,7 @@ type Query {
     user(userId: ID!):User
     me: User
     routes:[Route]
-    route: (id:_id!): Route
+    route (id: ID!): Route
 }
 
 type Mutation {
@@ -54,9 +54,28 @@ type Mutation {
         username: String!,
         password: String!
         ): Auth
+    addRoute(
+      geometry: [String]!
+      description: String!
+      difficultyLevel: Number!
+      notes: [Note]
+      tags: [Tag]
+      ): Auth
+    addNote(
+      id: Number!
+      notepoints: [String]!
+      image: String
+      content: String!
+      ): Auth
+    addTag(
+      tagName: String!
+    )
+
 }
 
 
 `
 //NOTE: I'm not totally sure if thats how  the query should look for user query context
 //we need to add more  queries and mutations
+
+module.exports= typeDefs;
