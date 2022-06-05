@@ -42,4 +42,4 @@ const resolvers = {
     }
 };
 
-odule.exports = resolvers;
+module.exports = resolvers;
