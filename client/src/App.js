@@ -1,6 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 
+//From MapboxTutorial and for testing. Probably will change/remove later 
+import React, { useRef, useEffect, useState } from 'react';
+
+//This will stay most likely
+import mapboxgl from 'mapbox-gl';
+
+mapboxgl.accessToken = 'sk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsNDFmMHFvYjAxOWIzamx5dGI0bXVmbDYifQ.Tnkx80DPYu3PdA5iAcVl4Q';
+
 function App() {
   return (
     <div className="App">
