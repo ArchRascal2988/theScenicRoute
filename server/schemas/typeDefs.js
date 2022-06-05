@@ -40,6 +40,8 @@ type Query {
     users: [User]!
     user(userId: ID!):User
     me: User
+    routes:[Route]
+    route: (id:_id!): Route
 }
 
 type Mutation {
