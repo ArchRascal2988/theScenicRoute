@@ -3,10 +3,11 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 
 type User {
-  _id:ID!
   username:String!
   password:String!
   email:String!
+  routes:[Route]
+  userLocation:String
 }
 
 type Auth {
@@ -15,16 +16,16 @@ type Auth {
 }
 
 type Route {
-  _id:ID!
   geometry:[String]!
   description:String
   difficultyLevel:Int!
   votes:Int
   userId:User!
+  tags:[Tag]
+  notes:[Note]
 }
 
 type Note {
-  _id:ID
   notepoints:[String]
   image:String
   content:String
@@ -32,9 +33,7 @@ type Note {
 }
 
 type Tag {
-  _id:ID
   tagName:String
-  routeId:Route!
 }
 
 type Query {
