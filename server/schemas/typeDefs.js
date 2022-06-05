@@ -41,7 +41,7 @@ type Query {
     user(userId: ID!):User
     me: User
     routes:[Route]
-    route: (id:_id!): Route
+    singleRoute(singleRoute: ID!): Route
 }
 
 type Mutation {
@@ -55,8 +55,8 @@ type Mutation {
         password: String!
         ): Auth
 }
-
-
-`
+`;
 //NOTE: I'm not totally sure if thats how  the query should look for user query context
 //we need to add more  queries and mutations
+
+module.exports = typeDefs
