@@ -1,4 +1,4 @@
-const {AuthenticationError} = require('apollo-server-express');
+// const {AuthenticationError} = require('apollo-server-express');
 const {User, Note, Route, Tag } = require('../models');
 const { signToken } = require('../utils/auth');
 
@@ -8,8 +8,8 @@ const resolvers = {
             return User.find({}).populate('routes')
            ;
         },
-        user: async (parent, args) => {
-            return User.findById(args.id).populate('routes')
+        user: async (parent, {userId}) => {
+            return User.findById({_id: userId}).populate('routes')
         },
         me: async (parent, args, context)=>{
             if(context.user){
@@ -21,12 +21,12 @@ const resolvers = {
         routes: async () =>{
             return Route.find().populate('Tag').populate('Note')
         },
+        singleRoute: async (parent, { routeId}) =>{
+            return Route.findOne({ _id: routeId }).populate('Tag').populate('Note')
+        }
         // locationRoutes: async () =>{
         //     return Route.find({ geometry: {$gte: YOUR LOCATION, $lte: YOURLOCATION}})
         // },
-        route: async(parent, args)=>{
-            return Route.findById(args.id).populate('Tag').populate('Note')
-        }
     },
     Mutation:{
         addUser: async  (parent, {name, email, password}) => {
@@ -51,6 +51,6 @@ const resolvers = {
             return { token, user };
         }
     }
-};
+}
 
-module.exports = resolvers;
+module.exports = resolvers
