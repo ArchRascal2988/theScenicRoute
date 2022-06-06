@@ -79,6 +79,14 @@ const resolvers = {
             );
             return vote;
         },
+        //removes a route via route_id
+        removeRoute: async (parent, { routeId }) => {
+            return Route.findOneAndDelete({ _id: routeId });
+          },
+        //removes a note via note_id  
+        removeNote: async (parent, noteId) => {
+            return Note.findOneAndDelete({ _id: noteId });
+          },
     },
 };
 
