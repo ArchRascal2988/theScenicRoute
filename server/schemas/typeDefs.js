@@ -26,7 +26,7 @@ type Route {
 }
 
 type Note {
-  notepoints:[String]
+  routePoints:[String]
   image:String
   content:String!
   routeId:Route!
@@ -63,14 +63,13 @@ type Mutation {
       ): Auth
     addNote(
       id: Number!
-      notepoints: [String]!
+      routePoints: Number!
       image: String
       content: String!
       ): Auth
     addTag(
       tagName: String!
-    )
-
+    ): Auth
 }
 `;
 //NOTE: I'm not totally sure if thats how  the query should look for user query context

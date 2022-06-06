@@ -1,12 +1,12 @@
 const { Schema, model } = require('mongoose');
 const noteSchema = new Schema(
     {
-        notepoints:[
+        routePoints:
             {
-            type: String,
+            type: Number,
             required: true
             }
-        ],
+        ,
         image:{
             type: String,
         },
