@@ -18,6 +18,9 @@ const userSchema = new Schema({
         required: true,
         minlength: 5,
       },
+    routes: {
+        type: Schema.Types.ObjectId
+    }
 });
 
 //copied from activity 25

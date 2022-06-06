@@ -7,7 +7,6 @@ type User {
   password:String!
   email:String!
   routes:[Route]
-  userLocation:String
 }
 
 type Auth {
@@ -21,23 +20,21 @@ type Route {
   difficultyLevel:Int!
   votes:Int
   userId:String!
-  tags:[Tag]
+  tags:[Int]
   notes:[Note]
 }
 
 type Note {
-  routePoints:[String]
+  routePoints: [Int]
   image:String
   content:String!
   routeId:Route!
 }
 
-type Tag {
-  tagName:String
-}
+
 
 type Query {
-    users: [User]!
+    # users: [User]!
     user(userId: ID!):User
     me: User
     routes:[Route]
@@ -59,16 +56,17 @@ type Mutation {
       geometry: [Int]!
       description: String!
       difficultyLevel: Int!
+      tags: [String]
       ): User
     addNote(
-      routePoints: Int!
+      routePoints: [Int]
       image: String
       content: String!
       routeId: String!
       ): Route
-    # addTag(
-    #   tagName: [String]!
-    # ): Route
+    addTag(
+      tagName: [String]!
+    ): Route
 }
 `;
 //NOTE: I'm not totally sure if thats how  the query should look for user query context
