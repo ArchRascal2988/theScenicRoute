@@ -3,7 +3,7 @@ const noteSchema = new Schema(
     {
         routePoints:
             {
-            type: Number,
+            type: [Number],
             required: true
             }
         ,
