@@ -1,23 +1,34 @@
-const {AuthenticationError} = require('apollo-server-express');
-const {User} = require('../models');
+// const {AuthenticationError} = require('apollo-server-express');
+const {User, Note, Route, Tag } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
         users: async()=> {
-            return User.find();
+            return User.find({}).populate('routes')
+           ;
         },
         user: async (parent, {userId}) => {
-            return User.findOne({_id: userId})
+            return User.findById({_id: userId}).populate('routes')
         },
         me: async (parent, args, context)=>{
             if(context.user){
-                return User.findOne({_id: context.user._id});
+                return User.findOne({_id: context.user._id}).populate('routes')
+          ;
             }
             throw new AuthenticationError('You need to be logged in!')
         },
+        routes: async () =>{
+            return Route.find().populate('Tag').populate('Note')
+        },
+        singleRoute: async (parent, { routeId}) =>{
+            return Route.findOne({ _id: routeId }).populate('Tag').populate('Note')
+        }
+        // locationRoutes: async () =>{
+        //     return Route.find({ geometry: {$gte: YOUR LOCATION, $lte: YOURLOCATION}})
+        // },
     },
-    mutation:{
+    Mutation:{
         addUser: async  (parent, {name, email, password}) => {
             const user = await User.create({ name, email, password});
             const token = signToken(user);
@@ -38,8 +49,8 @@ const resolvers = {
       
             const token = signToken(user);
             return { token, user };
-          },
+        }
     }
-};
+}
 
-module.exports = resolvers;
+module.exports = resolvers
