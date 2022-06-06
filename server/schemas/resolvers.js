@@ -24,9 +24,6 @@ const resolvers = {
         singleRoute: async (parent, { routeId}) =>{
             return Route.findOne({ _id: routeId }).populate('Tag').populate('Note')
         }
-        // locationRoutes: async () =>{
-        //     return Route.find({ geometry: {$gte: YOUR LOCATION, $lte: YOURLOCATION}})
-        // },
     },
     Mutation:{
         addUser: async  (parent, {name, email, password}) => {
@@ -49,6 +46,17 @@ const resolvers = {
       
             const token = signToken(user);
             return { token, user };
+        },
+        addRoute: async ( parent, {geometry, description, difficultyLevel}) =>{
+            const route = await Route.create({geometry, description, difficultyLevel});
+            return {route}
+        },
+        addNote: async ( parent, args) =>{
+            const createNote = await Note.create(args)
+            const addToRoute = await Route.findOneAndUpdate(
+                args.routeId, {$addToSet:{notes: createNote._id}, new: true}
+            )
+            return {createNote, addToRoute}
         }
     }
 }

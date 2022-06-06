@@ -26,7 +26,7 @@ type Route {
 }
 
 type Note {
-  notepoints:[String]
+  routePoints:[String]
   image:String
   content:String!
   routeId:Route!
@@ -57,20 +57,17 @@ type Mutation {
     addRoute(
       geometry: [String]!
       description: String!
-      difficultyLevel: Number!
-      notes: [Note]
-      tags: [Tag]
-      ): Auth
+      difficultyLevel: Int!
+      ): Route
     addNote(
-      id: Number!
-      notepoints: [String]!
+      routePoints: Int!
       image: String
       content: String!
-      ): Auth
-    addTag(
-      tagName: String!
-    )
-
+      routeId: String!
+      ): Route
+    # addTag(
+    #   tagName: [String]!
+    # ): Route
 }
 `;
 //NOTE: I'm not totally sure if thats how  the query should look for user query context
