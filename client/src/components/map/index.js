@@ -5,8 +5,10 @@ import { useRef, useEffect, useState } from 'react';
 
 //This will stay most likely
 import mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
+
 
 const Map= ()=>{
     //map state init
@@ -26,17 +28,22 @@ useEffect(() => {
   zoom: zoom
   
   })
-  
-  
-    map.current.addControl(new mapboxgl.GeolocateControl({trackUserLocatoin: false}), 'top-right');
+    const geocoder= new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: map.current,
+        fuzzyMatch: true,
+        autocomplete: false
+        });
 
+  
+    map.current.addControl(new mapboxgl.GeolocateControl({trackUserLocation: false}),'top-right');
+    map.current.addControl(geocoder, 'top-left');
 });
 
   return (
     <div>
         <div ref={mapContainer} className="map-container" />
     </div>
-    
   )
     
 }

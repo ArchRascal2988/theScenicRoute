@@ -9,7 +9,7 @@ import MapboxDraw from '@mapbox/mapbox-gl-draw'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
-const MapTest= ()=>{
+const CreateMap= ()=>{
     //map state init
 const mapContainer = useRef(null);
 const map = useRef(null);
@@ -68,4 +68,4 @@ const finiHandler= (e) =>{
     
 }
 
-export default MapTest;
+export default CreateMap;
