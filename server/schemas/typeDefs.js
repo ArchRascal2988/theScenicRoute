@@ -57,19 +57,17 @@ type Mutation {
     addRoute(
       geometry: [String]!
       description: String!
-      difficultyLevel: Number!
-      notes: [Note]
-      tags: [Tag]
-      ): Auth
+      difficultyLevel: Int!
+      ): Route
     addNote(
-      id: Number!
-      routePoints: Number!
+      routePoints: Int!
       image: String
       content: String!
-      ): Auth
-    addTag(
-      tagName: String!
-    ): Auth
+      routeId: String!
+      ): Route
+    # addTag(
+    #   tagName: [String]!
+    # ): Route
 }
 `;
 //NOTE: I'm not totally sure if thats how  the query should look for user query context
