@@ -1,6 +1,4 @@
 import './App.css';
-
-//From MapboxTutorial and for testing. Probably will change/remove later 
 import React from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
