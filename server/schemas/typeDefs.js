@@ -16,11 +16,11 @@ type Auth {
 }
 
 type Route {
-  geometry:[String]!
+  geometry:[Int]!
   description:String
   difficultyLevel:Int!
   votes:Int
-  userId:User!
+  userId:String!
   tags:[Tag]
   notes:[Note]
 }
@@ -46,7 +46,7 @@ type Query {
 
 type Mutation {
     addUser(
-        name: String!,
+        username: String!,
         email: String!,
         password: String!
         ): Auth
@@ -55,10 +55,11 @@ type Mutation {
         password: String!
         ): Auth
     addRoute(
-      geometry: [String]!
+      userId: String!
+      geometry: [Int]!
       description: String!
       difficultyLevel: Int!
-      ): Route
+      ): User
     addNote(
       routePoints: Int!
       image: String

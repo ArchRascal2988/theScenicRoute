@@ -4,7 +4,7 @@ const routeSchema = new Schema(
     {
         geometry:[
             {
-                type: String
+                type: Number
             }
         ],
         description:{
@@ -21,8 +21,7 @@ const routeSchema = new Schema(
             default:0
         },
         userId:{
-            type: Schema.Types.ObjectId,
-            ref: 'User',
+            type: String,
             required: true
         },
         tags:[

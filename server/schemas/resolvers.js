@@ -26,8 +26,8 @@ const resolvers = {
         }
     },
     Mutation:{
-        addUser: async  (parent, {name, email, password}) => {
-            const user = await User.create({ name, email, password});
+        addUser: async  (parent, {username, email, password}) => {
+            const user = await User.create({ username, email, password});
             const token = signToken(user);
             return {token, user};
         },
@@ -47,9 +47,12 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addRoute: async ( parent, {geometry, description, difficultyLevel}) =>{
-            const route = await Route.create({geometry, description, difficultyLevel});
-            return {route}
+        addRoute: async ( parent, args) =>{
+            const createRoute = await Route.create(args);
+            const addToUser = await User.findOneAndUpdate(
+                args.routeId, {$addToSet:{routes: createRoute._id}, new: true}
+            )
+            return {createRoute, addToUser}
         },
         addNote: async ( parent, args) =>{
             const createNote = await Note.create(args)
