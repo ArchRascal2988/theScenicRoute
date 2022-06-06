@@ -1,6 +1,6 @@
 import React from "react";
 
-import MapTest from "../components/mapTest/index";
+import MapTest from "../components/createMap/index";
 
 const Test = () =>{
 

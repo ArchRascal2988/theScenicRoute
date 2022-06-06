@@ -11,10 +11,7 @@ import Dash from './pages/Dash';
 
 function App() {
   return (
-    ///header
-
-    <Router history={history}>
-        <Header />
+    <Router>
           <Routes>
             <Route 
               path="/" 
@@ -33,11 +30,7 @@ function App() {
             element={<LogSign type='signup' />}
             />
           </Routes>
-        
-      
     </Router>
-
-
   );
 }
 

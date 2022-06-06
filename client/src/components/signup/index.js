@@ -1,10 +1,11 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button'
 
-const Login= ()=>{
+const Signup= ()=>{
     return (
         <div>
-        <h1>Login</h1>
+        <h1>Signup</h1>
         <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
@@ -28,4 +29,4 @@ const Login= ()=>{
   )
 }
 
-export default Login;
+export default Signup;
