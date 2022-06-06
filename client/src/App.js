@@ -1,40 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
 
 //From MapboxTutorial and for testing. Probably will change/remove later 
 import React from 'react';
 
-import Test from "./pages/Test";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App(){
+import LogSign from './pages/LogSign';
+import Home from './pages/Home';
+import Dash from './pages/Dash';
+
+function App() {
   return (
-      <Test />
+    ///header
+
+    <Router history={history}>
+        <Header />
+          <Routes>
+            <Route 
+              path="/" 
+              element={<Home />} 
+            />
+            <Route 
+              path="/dashboard" 
+              element={<Dash />} 
+            />
+            <Route
+            path= '/login'
+            element={<LogSign type='login' />}
+            />
+            <Route
+            path= '/signup'
+            element={<LogSign type='signup' />}
+            />
+          </Routes>
+        
+      
+    </Router>
+
+
   );
 }
-
-
-
-
-// Starter code KEEP
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
