@@ -71,10 +71,16 @@ type Mutation {
       routeId: String!, 
       routeVote: Int!
       ): Route
-      downVote(
-        routeId: String!, 
-        routeVote: Int!
-        ): Route
+    downVote(
+      routeId: String!, 
+      routeVote: Int!
+      ): Route
+    removeRoute(
+      routeId: String!
+      ): Route
+    removeNote(
+      noteId: String!
+      ): Route  
 }
 `;
 //NOTE: I'm not totally sure if thats how  the query should look for user query context
