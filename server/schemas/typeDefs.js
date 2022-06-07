@@ -18,6 +18,7 @@ type Route {
   geometry:[Int]!
   description:String
   difficultyLevel:Int!
+  title:String!
   votes:Int
   userId:String!
   tags:[String]
@@ -34,7 +35,6 @@ type Note {
 
 
 type Query {
-    # users: [User]!
     user(userId: ID!):User
     me: User
     routes:[Route]
@@ -56,6 +56,7 @@ type Mutation {
       routeName: String!
       geometry: [Int]!
       description: String!
+      title: String
       difficultyLevel: Int!
       tags: [String]
       ): User

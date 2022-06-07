@@ -4,10 +4,6 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        users: async()=> {
-            return User.find({}).populate('routes')
-           ;
-        },
         user: async (parent, { userId }) => {
             return User.findById({ _id: userId })
         },
