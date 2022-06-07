@@ -6,11 +6,14 @@ import React from "react";
 
 
 function Route() {
+
+
+  
   return (
    
 <div>
   <h2 className = "Route Name"></h2>
-  <div className="dropdown">
+  {/* <div className="dropdown">
 <button className={`dropbtn ${difficulty}`}></button>
                     <div className="dropdown-content">
                         <p onClick={() => setDiff(difficultyLevel[0])}>Easy</p>
@@ -28,7 +31,7 @@ function Route() {
         
         
         
-                        </div>
+                        </div> */}
 <div> 
 
 <h2> className= "Difficulty"</h2>

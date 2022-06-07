@@ -19,7 +19,7 @@ const Signup= ()=>{
                 <Form.Label>Password</Form.Label>
                 <Form.Control className="passInput" type="password" placeholder="Password" />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button className='submitBtn' variant="primary" type="submit">
                 Submit
             </Button>
         </Form>

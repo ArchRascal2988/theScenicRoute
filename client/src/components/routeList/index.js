@@ -1,5 +1,5 @@
 import React from 'react';
-import RouteItem from '../components/route/route';
+import RouteItem from '../route/index'
 
 // Accept an array of routes as a prop
 const RouteList = ({ routes }) => {
@@ -16,4 +16,4 @@ const RouteList = ({ routes }) => {
   )
 };
 
-export default RouteList;
+export default RouteList;  
