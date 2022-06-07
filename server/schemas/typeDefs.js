@@ -20,7 +20,7 @@ type Route {
   difficultyLevel:Int!
   votes:Int
   userId:String!
-  tags:[Int]
+  tags:[String]
   notes:[Note]
 }
 
@@ -81,7 +81,7 @@ type Mutation {
       ): Route
     removeNote(
       noteId: String!
-      ): Route  
+      ): Note  
 }
 `;
 //NOTE: I'm not totally sure if thats how  the query should look for user query context

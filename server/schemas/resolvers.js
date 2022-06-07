@@ -1,5 +1,6 @@
 // const {AuthenticationError} = require('apollo-server-express');
 const { User, Note, Route } = require('../models');
+const { findOneAndUpdate } = require('../models/Note');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -81,10 +82,21 @@ const resolvers = {
         },
         //removes a route via route_id
         removeRoute: async (parent, { routeId }) => {
+            const parentObj = Route.findOne({_id: routeId})
+            if(parentObj.notes){
+                parentObj.notes.map((x)=>{
+                    Note.findOneAndDelete( {_id: x} )
+                })
+            }
             return Route.findOneAndDelete({ _id: routeId });
           },
         //removes a note via note_id  
-        removeNote: async (parent, noteId) => {
+        removeNote: async (parent, {noteId}) => {
+            Route.findOneAndUpdate(
+                {_id: this.routeId},
+                {$pull: {notes: noteId}},
+                {new: true}
+                )
             return Note.findOneAndDelete({ _id: noteId });
           },
     },
