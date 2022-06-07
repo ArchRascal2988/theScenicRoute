@@ -53,6 +53,7 @@ type Mutation {
         ): Auth
     addRoute(
       userId: String!
+      routeName: String!
       geometry: [Int]!
       description: String!
       difficultyLevel: Int!
@@ -69,11 +70,11 @@ type Mutation {
     ): Route
     upVote(
       routeId: String!, 
-      routeVote: Int!
+      votes: Int!
       ): Route
     downVote(
       routeId: String!, 
-      routeVote: Int!
+      votes: Int!
       ): Route
     removeRoute(
       routeId: String!

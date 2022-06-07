@@ -63,21 +63,21 @@ const resolvers = {
         },
         //+1 the vote count on a specific route
         upVote: async (parent, args) => {
-            const vote = await Route.findOneAndUpdate(
+            const upvote = await Route.findOneAndUpdate(
                 args.routeId,
-                { $inc: { vote: 1 } },
+                { $inc: { votes: 1 } },
                 { new: true }
             );
-            return vote;
+            return upvote;
         },
         //-1 the vote count on a specific route
         downVote: async (parent, args) => {
-            const vote = await Route.findOneAndUpdate(
+            const downvote = await Route.findOneAndUpdate(
                 args.routeId,
-                { $inc: { vote: -1 } },
+                { $inc: { votes: -1 } },
                 { new: true }
             );
-            return vote;
+            return downvote;
         },
         //removes a route via route_id
         removeRoute: async (parent, { routeId }) => {
