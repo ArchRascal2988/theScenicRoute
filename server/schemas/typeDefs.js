@@ -20,7 +20,7 @@ type Route {
   difficultyLevel:Int!
   votes:Int
   userId:String!
-  tags:[Int]
+  tags:[String]
   notes:[Note]
 }
 
@@ -53,6 +53,7 @@ type Mutation {
         ): Auth
     addRoute(
       userId: String!
+      routeName: String!
       geometry: [Int]!
       description: String!
       difficultyLevel: Int!
@@ -69,18 +70,18 @@ type Mutation {
     ): Route
     upVote(
       routeId: String!, 
-      routeVote: Int!
+      votes: Int!
       ): Route
     downVote(
       routeId: String!, 
-      routeVote: Int!
+      votes: Int!
       ): Route
     removeRoute(
       routeId: String!
       ): Route
     removeNote(
       noteId: String!
-      ): Route  
+      ): Note  
 }
 `;
 //NOTE: I'm not totally sure if thats how  the query should look for user query context

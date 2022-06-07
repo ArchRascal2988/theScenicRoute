@@ -1,5 +1,6 @@
 // const {AuthenticationError} = require('apollo-server-express');
 const { User, Note, Route } = require('../models');
+const { findOneAndUpdate } = require('../models/Note');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -63,28 +64,39 @@ const resolvers = {
         },
         //+1 the vote count on a specific route
         upVote: async (parent, args) => {
-            const vote = await Route.findOneAndUpdate(
+            const upvote = await Route.findOneAndUpdate(
                 args.routeId,
-                { $inc: { vote: 1 } },
+                { $inc: { votes: 1 } },
                 { new: true }
             );
-            return vote;
+            return upvote;
         },
         //-1 the vote count on a specific route
         downVote: async (parent, args) => {
-            const vote = await Route.findOneAndUpdate(
+            const downvote = await Route.findOneAndUpdate(
                 args.routeId,
-                { $inc: { vote: -1 } },
+                { $inc: { votes: -1 } },
                 { new: true }
             );
-            return vote;
+            return downvote;
         },
         //removes a route via route_id
         removeRoute: async (parent, { routeId }) => {
+            const parentObj = Route.findOne({_id: routeId})
+            if(parentObj.notes){
+                parentObj.notes.map((x)=>{
+                    Note.findOneAndDelete( {_id: x} )
+                })
+            }
             return Route.findOneAndDelete({ _id: routeId });
           },
         //removes a note via note_id  
-        removeNote: async (parent, noteId) => {
+        removeNote: async (parent, {noteId}) => {
+            Route.findOneAndUpdate(
+                {_id: this.routeId},
+                {$pull: {notes: noteId}},
+                {new: true}
+                )
             return Note.findOneAndDelete({ _id: noteId });
           },
     },
