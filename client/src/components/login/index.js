@@ -30,22 +30,20 @@ const Login= (props)=>{
         console.log(formState);
         try {
           const { data } = await login({
+
              ...formState 
           });
-          
-          
-
           Auth.login(data.login.token);
         } catch (e) {
           console.error(e);
         }
     
-        
+
         setFormState({
           email: '',
           password: '',
         });
-        
+
       };
 
     return (
@@ -54,12 +52,15 @@ const Login= (props)=>{
         <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
+
                 <Form.Control className="usernInput" type="username" name='username' placeholder="Enter username" value={formState.username}
+
                   onChange={handleChange}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
+
                 <Form.Control className="passInput" type="password" name='password' placeholder="*****" value={formState.password}
                   onChange={handleChange}/>
             </Form.Group>
