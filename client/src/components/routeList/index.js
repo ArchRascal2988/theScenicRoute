@@ -9,7 +9,11 @@ const RouteList = ({ routes }) => {
   });
 
   // Return our array of RouteItems wrapped inside a parent div
-  return <div className="ui relaxed divided list">{renderedList}</div>;
+  return (
+      <section className='userRoutes'>
+        <div className="ui relaxed divided list">{renderedList}</div>;
+      </section>
+  )
 };
 
 export default RouteList;

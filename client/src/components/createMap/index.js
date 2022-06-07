@@ -20,34 +20,81 @@ const[geoData, setGData] = useState({});
 
 
 useEffect(() => {
-  if (map.current) return; // initialize map only once
-  map.current = new mapboxgl.Map({
-  container: mapContainer.current,
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [lng, lat],
-  zoom: zoom
-  
-  })
-  
-  
-    map.current.addControl(new mapboxgl.GeolocateControl({trackUserLocatoin: false}), 'top-right');
+  const mapContainer = useRef(null);
+    const map = useRef(null);
+    const [lng, setLng] = useState(-70.9);
+    const [lat, setLat] = useState(42.35);
+    const [zoom, setZoom] = useState(9);
 
-    const draw= new MapboxDraw({
-        displayControlsDefault: true,
-        controls:{
-            point: true,
-            line_string: true,
-            polygon: false,
-            trash: true
-        }
+
+    useEffect(() => {
+        if (map.current) return;
+        map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [lng, lat],
+            zoom: zoom
+        })
+    
+        const geocoder= new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: map.current,
+            fuzzyMatch: true,
+            autocomplete: false,
+            proximity:{
+                "latitude": lat,
+                "longitude": lng
+            }
+        });
+
+          
+
+        const draw= new MapboxDraw({
+            displayControlsDefault: true,
+            controls:{
+                point: true,
+                line_string: true,
+                polygon: false,
+                trash: true
+            }
+        });
+        map.current.addControl(draw);
+        map.current.on('draw.create', (e)=>{
+            console.log(e);
+            draw.add(e.features[0].geometry);
+            setGData(draw.getAll());
+        })
+      
+        map.current.addControl(new mapboxgl.GeolocateControl({trackUserLocation: false}),'top-right');
+        map.current.addControl(geocoder, 'top-left');    
+
+        map.current.on('load', () => {
+            geocoder.setRenderFunction((item) =>{
+                const maki = item.properties.maki || 'marker';
+                return `<div class='geocoder-dropdown-item'>
+                <img class='geocoder-dropdown-icon' src='https://unpkg.com/@mapbox/maki@6.1.0/icons/${maki}-15.svg'>
+                <span class='geocoder-dropdown-text'>
+                ${item.text}
+                </span>
+                </div>`;
+                },);
+
+            map.current.addLayer({
+                'id': 'my-data-layer',
+                'type': 'line',
+                'source': 'my-data',
+                'paint': {
+                    'line-width': 5,
+                    // Use a get expression (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-get)
+                    // to set the line-color to a feature property value.
+                    'line-color': 'red'
+                },
+                "minzoom": 12
+            });
+        });
+        
+
     });
-    map.current.addControl(draw);
-    map.current.on('draw.create', (e)=>{
-      console.log(e);
-      draw.add(e.features[0].geometry);
-      setGData(draw.getAll());
-  })
-
 });
 
 
