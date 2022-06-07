@@ -67,10 +67,18 @@ type Mutation {
     addTag(
       tagName: [String]!
     ): Route
+    upVote(
+      routeId: String!, 
+      routeVote: Int!
+      ): Route
+      downVote(
+        routeId: String!, 
+        routeVote: Int!
+        ): Route
 }
 `;
 //NOTE: I'm not totally sure if thats how  the query should look for user query context
 //we need to add more  queries and mutations
 
 
-module.exports= typeDefs;
+module.exports = typeDefs;
