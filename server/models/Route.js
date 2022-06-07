@@ -20,6 +20,10 @@ const routeSchema = new Schema(
             required: true,
             default:0
         },
+        routeName:{
+            type: String,
+            required: true
+        },
         userId:{
             type: String,
             required: true
