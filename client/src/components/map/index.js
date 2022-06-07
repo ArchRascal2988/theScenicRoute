@@ -40,6 +40,7 @@ const Map= ()=>{
             }
         });
       
+
         map.current.addControl(new mapboxgl.GeolocateControl({trackUserLocation: false}),'top-right');
         map.current.addControl(geocoder, 'top-left');    
     
@@ -63,6 +64,16 @@ const Map= ()=>{
                     }, //CHANGE ABOVE OBJECT LATER TO BE DYNAMIC
                 }
             })
+
+            geocoder.setRenderFunction((item) =>{
+                const maki = item.properties.maki || 'marker';
+                return `<div class='geocoder-dropdown-item'>
+                <img class='geocoder-dropdown-icon' src='https://unpkg.com/@mapbox/maki@6.1.0/icons/${maki}-15.svg'>
+                <span class='geocoder-dropdown-text'>
+                ${item.text}
+                </span>
+                </div>`;
+                },);
 
             map.current.addLayer({
                 'id': 'my-data-layer',
