@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LogSign from './pages/LogSign';
 import Home from './pages/Home';
 import Dash from './pages/Dash';
+import Create from './pages/Create';
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
             <Route 
               path="/dashboard" 
               element={<Dash />} 
+            />
+            <Route 
+              path="/create" 
+              element={<Create />} 
             />
             <Route
             path= '/login'

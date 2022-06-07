@@ -6,15 +6,14 @@ import React from "react";
 
 
 function Route() {
+
+
+  
   return (
-
-<h2 className = "Route Name">
    
-
-
-
-
-<div className="dropdown">
+<div>
+  <h2 className = "Route Name"></h2>
+  {/* <div className="dropdown">
 <button className={`dropbtn ${difficulty}`}></button>
                     <div className="dropdown-content">
                         <p onClick={() => setDiff(difficultyLevel[0])}>Easy</p>
@@ -32,7 +31,7 @@ function Route() {
         
         
         
-                        </div>
+                        </div> */}
 <div> 
 
 <h2> className= "Difficulty"</h2>
@@ -56,29 +55,12 @@ function Route() {
 
 
 <h2> className= "Reviews Rating"</h2>
-
 </div>
-
-
-
-
-
-
-
-
-
-
+</div>
 
  )};
 
-
-
-
-                
-
-
-
-    export default Route; 
+ export default Route; 
 
 
 
