@@ -20,7 +20,7 @@ const routeSchema = new Schema(
             required: true,
             default:0
         },
-        routeName:{
+        title:{
             type: String,
             required: true
         },

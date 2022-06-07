@@ -3,6 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 
 type User {
+  _id: ID
   username:String!
   password:String!
   email:String!
@@ -15,9 +16,11 @@ type Auth {
 }
 
 type Route {
+  _id: ID
   geometry:[Int]!
   description:String
   difficultyLevel:Int!
+  title:String!
   votes:Int
   userId:String!
   tags:[String]
@@ -25,6 +28,7 @@ type Route {
 }
 
 type Note {
+  _id: ID
   routePoints: [Int]
   image:String
   content:String!
@@ -34,8 +38,7 @@ type Note {
 
 
 type Query {
-    # users: [User]!
-    user(userId: ID!):User
+    user(username: String!):User
     me: User
     routes:[Route]
     singleRoute(singleRoute: ID!): Route
@@ -56,6 +59,7 @@ type Mutation {
       routeName: String!
       geometry: [Int]!
       description: String!
+      title: String
       difficultyLevel: Int!
       tags: [String]
       ): User
