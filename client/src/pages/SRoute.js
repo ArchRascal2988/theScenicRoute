@@ -17,7 +17,7 @@ const SRoute= () =>{
         <main>
             <Header />
             
-            <Map />
+            <Map type='singleRoute' />
             
             <RouteInfo  />
     
