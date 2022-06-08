@@ -19,6 +19,10 @@ const resolvers = {
         },
         singleRoute: async (parent, { routeId }) => {
             return Route.findOne({ _id: routeId }).populate('notes')
+        },
+        //find all user routes by userId
+        userRoutes: async (parent, { userId }) => {
+            return Route.findById({_id: userId})
         }
     },
     Mutation: {

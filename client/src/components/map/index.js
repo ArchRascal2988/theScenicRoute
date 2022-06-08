@@ -97,8 +97,12 @@ const Map= ()=>{
                  
                 new mapboxgl.Popup()
                 .setLngLat(coordinates)
-                .setHTML(`<a href='/route'`) //<-----WE ARE NOT GOING TO HAVE A COMPONET FOR THIS. HTML FOR POPUP HERE. Right now it just links to route page
+                .setHTML(`<h2>{route.title}</h2>
+                          <h2>{route.difficulty}</h2>
+                          <h2>{route.votes}</h2>  
+                          <h3><a href="/route/:id">see more</a></h3>`) //<-----WE ARE NOT GOING TO HAVE A COMPONET FOR THIS. HTML FOR POPUP HERE. Right now it just links to route page
                 //(IMPORTATNT: Whatever href we use for the link it needs the route id in the url like so-> /route/ab2343)
+                //create an HTML outline for the popup in this file and link the single route 
                 .addTo(map.current);
                 });
         });
@@ -108,10 +112,6 @@ const Map= ()=>{
     });
     
     
-
-    
-
-
   return (
     <section>
         <div ref={mapContainer} className="map-container" />
