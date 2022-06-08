@@ -8,6 +8,7 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "start": "cd server && npm start",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
   },
   "repository": {
@@ -18,10 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server-express": "^3.8.2",
-    "concurrently": "^7.2.1",
-    "express": "^4.18.1",
-    "graphql": "^16.5.0"
+    "concurrently": "^5.1.0"
   },
   "bugs": {
     "url": "https://github.com/ArchRascal2988/theScenicRoute/issues"
