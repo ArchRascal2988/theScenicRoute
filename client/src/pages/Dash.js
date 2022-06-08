@@ -13,7 +13,7 @@ const Dash = () =>{
 
             <RouteList routes={dbData} />
 
-            <Map type='dash'/>
+            <Map />
 
             <Footer type='dash'/>
         </main>
