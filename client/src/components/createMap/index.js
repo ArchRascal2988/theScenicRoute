@@ -78,19 +78,6 @@ useEffect(() => {
                 </span>
                 </div>`;
                 },);
-
-            map.current.addLayer({
-                'id': 'my-data-layer',
-                'type': 'line',
-                'source': 'my-data',
-                'paint': {
-                    'line-width': 5,
-                    // Use a get expression (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-get)
-                    // to set the line-color to a feature property value.
-                    'line-color': 'red'
-                },
-                "minzoom": 12
-            });
         });
         
 
