@@ -4,28 +4,26 @@ import React from "react";
 import Header from '../components/header/index';
 import Footer from '../components/footer/index';
 import Map from '../components/map/index';
-import Route from '../components/route/index';
+import RouteInfo from '../components/routeInfo/index';
 
 import { useParams } from 'react-router-dom';
 
-const {rId}= useParams();
+const SRoute= () =>{
+    const {rId}= useParams();
 //API CALL FOR SINGLE ROUTE USING ^^^^
 
 
-
-
-const Route= () =>{
     return(
         <main>
             <Header />
             
             <Map />
             
-            <Route  />
+            <RouteInfo  />
     
             <Footer />
         </main>
     )
 }
 
-export default Route;
+export default SRoute;
