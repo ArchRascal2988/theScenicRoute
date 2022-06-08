@@ -10,13 +10,12 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
 
-const Map= ()=>{
+const Map= (props)=>{
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
-
 
     useEffect(() => {
         if (map.current) return;
@@ -86,7 +85,7 @@ const Map= ()=>{
                 "minzoom": 12
             });
 
-            map.on('click', 'my-data-layer', (e) => {
+            map.current.on('click', 'my-data-layer', (e) => {
                 const coordinates = e.features[0].geometry.coordinates.slice();
                 //THIS IS WHERE THE POPUP IS BEING RENDERED. WE NEED TO HOOK INTO OUR DATA KEYS 
                 
@@ -101,6 +100,7 @@ const Map= ()=>{
                           <h2>{route.difficulty}</h2>
                           <h2>{route.votes}</h2>  
                           <h3><a href="/route/:id">see more</a></h3>`) //<-----WE ARE NOT GOING TO HAVE A COMPONET FOR THIS. HTML FOR POPUP HERE. Right now it just links to route page
+
                 //(IMPORTATNT: Whatever href we use for the link it needs the route id in the url like so-> /route/ab2343)
                 //create an HTML outline for the popup in this file and link the single route 
                 .addTo(map.current);
@@ -117,7 +117,6 @@ const Map= ()=>{
         <div ref={mapContainer} className="map-container" />
     </section>
   )
-    
 }
 
 export default Map;
