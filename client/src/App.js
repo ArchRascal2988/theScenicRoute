@@ -7,7 +7,7 @@ import LogSign from './pages/LogSign';
 import Home from './pages/Home';
 import Dash from './pages/Dash';
 import Create from './pages/Create';
-import Route from './pages/Route';
+import SRoute from './pages/SRoute';
 
 import {
   ApolloClient,
@@ -60,7 +60,7 @@ function App() {
             />
             <Route 
               path="/route/:routeId" 
-              element={<Route />} 
+              element={<SRoute />} 
             />
             <Route
             path= '/login'

@@ -5,14 +5,14 @@ import React from "react";
 
 
 
-function Route() {
+function RouteInfo() {
 
 
   
   return (
    
 <div>
-  <h2 className = "Route Name"></h2>
+  <h2 className = "routeName"></h2>
   {/* <div className="dropdown">
 <button className={`dropbtn ${difficulty}`}></button>
                     <div className="dropdown-content">
@@ -60,7 +60,7 @@ function Route() {
 
  )};
 
- export default Route; 
+ export default RouteInfo; 
 
 
 
