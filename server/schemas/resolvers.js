@@ -19,6 +19,10 @@ const resolvers = {
         },
         singleRoute: async (parent, { routeId }) => {
             return Route.findOne({ _id: routeId }).populate('notes')
+        },
+        //find all user routes by userId
+        userRoutes: async (parent, { userId }) => {
+            return Route.findById({_id: userId}).populate('notes')
         }
     },
     Mutation: {
@@ -34,7 +38,8 @@ const resolvers = {
               throw new AuthenticationError('No profile with this username found!');
             }
 
-            const correctPw = await User.isCorrectPassword(password);
+            const correctPw = await user.isCorrectPassword(password);
+
 
             if (!correctPw) {
               throw new AuthenticationError('Incorrect password!');

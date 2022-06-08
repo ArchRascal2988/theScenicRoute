@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import LogSign from './pages/LogSign';
@@ -50,7 +49,9 @@ function App() {
               path="/" 
               element={<Home />} 
             />
-            <Route 
+
+           <Route 
+
               path="/dashboard" 
               element={<Dash />} 
             />
