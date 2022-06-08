@@ -39,11 +39,18 @@ export const QUERY_USER = gql`
 }
 `;
 
+//this is for the homepage map...
 export const QUERY_ROUTES = gql`
-    {
-        routes{
-            description
-        }
+
+    query allRoutes{
+        routes {
+        _id
+        geometry
+        description
+        title
+        votes
+        userId
+  }
   }
 `;
 
@@ -57,8 +64,6 @@ export const QUERY_SINGLE_ROUTE = gql`
             title
             votes
             userId
-            tags
-            notes
         }
     }
 `
