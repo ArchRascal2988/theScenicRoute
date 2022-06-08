@@ -57,7 +57,7 @@ export const QUERY_ROUTES = gql`
 
 export const QUERY_SINGLE_ROUTE = gql`
     query getSingleRoutes($routeId: ID){
-        route(roughtId: $routeId){
+        route(routeId: $routeId){
             _id
             geometry
             description
@@ -72,8 +72,8 @@ export const QUERY_SINGLE_ROUTE = gql`
 `
 
 export const QUERY_USER_ROUTES = gql`
-    query getSingleRoutes($routeId: ID){
-        route(roughtId: $routeId){
+    query getUserRoutes($userId: ID){
+        userRoute(userId: $userId){
             _id
             geometry
             description

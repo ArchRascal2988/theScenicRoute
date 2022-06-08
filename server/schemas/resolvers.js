@@ -22,7 +22,7 @@ const resolvers = {
         },
         //find all user routes by userId
         userRoutes: async (parent, { userId }) => {
-            return Route.findById({_id: userId})
+            return Route.findById({_id: userId}).populate('notes')
         }
     },
     Mutation: {
