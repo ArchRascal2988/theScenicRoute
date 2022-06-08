@@ -49,7 +49,9 @@ function App() {
               path="/" 
               element={<Home />} 
             />
+
            <Route 
+
               path="/dashboard" 
               element={<Dash />} 
             />
