@@ -29,7 +29,7 @@ const Dash = () => {
 
 
 
-            <Footer />
+            <Footer type='dash'/>
         </main>
     )
 
