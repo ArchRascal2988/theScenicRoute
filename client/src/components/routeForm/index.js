@@ -7,29 +7,42 @@ function RouteForm(props) {
     const difficultyLevel = ["easy", "moderate", "hard", "madman"]
     //length will be generated from the route? How not sure...
     const [length, setLength] = useState("");
+    const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [rating, setRating] = useState("");
     const [tags, setTags] = useState("");
-    //these will added in the database
-    const tagNames = ["paved", "forest", "dog-friendly"," kid-friendly", "wheelchair-friendly", "walking", "running", "views"]
+    const [notes, setNotes] = useState("");
+    const [points, setPoints] =useState("");
+
+
+  //this is the function where we will map through the geometry and populate the points dropdown
+    // const pointsDropDown = ({ points }) => {
+    // let pointNum = 1
+    // const pointsList = routes.geometry.map((points) => {
+    //   return <p onClick={() => setPoints(points)}></p>
+    // });
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         props.onSubmit({
             id: Math.random(Math.floor() * 1000),
+            title: title,
             difficulty: difficulty,
-            length: length,
             description: description,
+            length: length,
             rating: rating,
             tags: tags,
+            notes: notes
         });
 
+        setTitle('');
         setDiff('');
         setLength('');
         setDescription('');
         setRating('');
         setTags('');
+        setNotes('');
     }
 
 
@@ -42,6 +55,14 @@ function RouteForm(props) {
 
     return (
         <div>
+            <input
+                type="text"
+                placeholder="Title of Route"
+                value={title}
+                name="text"
+                className="route-rating"
+                onChange={handleChange}
+            ></input>
             <form className="route-form" onSubmit={handleSubmit}>
                 <div className="dropdown">
                     <button className={`dropbtn ${difficulty}`}></button>
@@ -69,26 +90,32 @@ function RouteForm(props) {
                     className="route-description"
                     onChange={handleChange}
                 ></input>
-                {/*Rating will be changed into a star system or something similar */}
                 <input
                     type="text"
-                    placeholder="Rate Route"
+                    placeholder="Rate Route out of 10"
                     value={rating}
                     name="text"
                     className="route-rating"
                     onChange={handleChange}
                 ></input>
-                {/* Tags will be a drop down or a list of tags will be appear and once the user clicks on a tag, a tag will be added. */}
-                <div className="dropdown">
-                    <button className={`dropbtn ${difficulty}`}></button>
+                <input
+                    type="text"
+                    placeholder="insert tags separated by a ,"
+                    value={tags}
+                    name="text"
+                    className="route-tags"
+                    onChange={handleChange}
+                ></input>
+                {/* Set this notes part of the form to an event listener: double click to display this part of the form */}
+                    {/* <div className="dropdown">
+                    <button className={`dropbtn ${points}`}></button>
                     <div className="dropdown-content">
-                        <p onClick={() => setTags(tagNames[0])}>Insert Tag Name</p>
-                        <p onClick={() => setTags(tagNames[1])}>Insert Tag Name</p>
-                        <p onClick={() => setTags(tagNames[2])}>Insert Tag Name</p>
-                        <p onClick={() => setTags(tagNames[3])}>Insert Tag Name</p>
-                        {/* additional tags will be added... */}
+                        <p onClick={() => setDiff(difficultyLevel[0])}>Easy</p>
+                        <p onClick={() => setDiff(difficultyLevel[1])}>Moderate</p>
+                        <p onClick={() => setDiff(difficultyLevel[2])}>Hard</p>
+                        <p onClick={() => setDiff(difficultyLevel[3])}>Madman</p>
                     </div>
-                </div>
+                    </div> */}
                 <button className="bucket-button">Create Route</button>
             </form>
         </div>
