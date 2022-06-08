@@ -5,7 +5,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         user: async (parent, { userId }) => {
-            return User.findById({ _id: userId })
+            return User.findById({ _id: userId }).populate('routes')
         },
         me: async (parent, args, context)=>{
             if(context.user){
@@ -34,7 +34,7 @@ const resolvers = {
               throw new AuthenticationError('No profile with this username found!');
             }
 
-            const correctPw = await profile.isCorrectPassword(password);
+            const correctPw = await User.isCorrectPassword(password);
 
             if (!correctPw) {
               throw new AuthenticationError('Incorrect password!');
