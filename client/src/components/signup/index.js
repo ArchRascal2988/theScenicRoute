@@ -30,13 +30,18 @@ const Signup= ()=>{
     
         try {
           const { data } = await addUser({
-            variables: { ...formState },
+             ...formState 
           });
     
           Auth.login(data.addUser.token);
         } catch (e) {
           console.error(e);
         }
+
+        setFormState({
+            email: '',
+            password: '',
+          });
       };
     
     return (
@@ -45,15 +50,15 @@ const Signup= ()=>{
         <Form onSubmit ={handleFormSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control className="emailInput" type="username" placeholder="Enter email" value={formState.email} onChange={handleChange}/>
+                <Form.Control className="emailInput" type="username" name='email' placeholder="Enter email" value={formState.email} onChange={handleChange}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Username</Form.Label>
-                <Form.Control className="usernInput" type="username" placeholder="Enter username" value={formState.username} onchange={handleChange}/>
+                <Form.Control className="usernInput" type="username" name='username' placeholder="Enter username" value={formState.username} onChange={handleChange}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control className="passInput" type="password" placeholder="Password" value={formState.password} onChange={handleChange} />
+                <Form.Control className="passInput" type="password" name='password' placeholder="Password" value={formState.password} onChange={handleChange} />
             </Form.Group>
             <Button className='submitBtn' variant="primary" type="submit">
                 Submit
