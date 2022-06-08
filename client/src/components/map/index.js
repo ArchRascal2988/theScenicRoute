@@ -6,7 +6,6 @@ import { useRef, useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import { typeFromAST } from "graphql";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
@@ -17,7 +16,6 @@ const Map= (props)=>{
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
-
 
     useEffect(() => {
         if (map.current) return;

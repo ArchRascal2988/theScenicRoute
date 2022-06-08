@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import LogSign from './pages/LogSign';
@@ -18,14 +17,6 @@ import {
 } from '@apollo/client';
 
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import LogSign from './pages/LogSign';
-import Home from './pages/Home';
-// import Dash from './pages/Dash';
-// import Create from './pages/Create';
-// import Route from './pages/Route';
-
 
 const httpLink = createHttpLink({
   uri: '/graphql',

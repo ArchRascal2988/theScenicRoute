@@ -19,17 +19,19 @@ function Signup(){
       const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState);
-    
+        try{
           const  {data}  = await addUser({
-             variables: {
-               username: formState.username,
-               email: formState.email,
-               password: formState.password,
-             }
-          });
+            variables: {
+              username: formState.username,
+              email: formState.email,
+              password: formState.password,
+            }
+         });
           console.log(data)
-          Auth.login(data.addUser.token);
-      
+          Auth.login(data.addUser.token); 
+        }catch(e){
+
+        }
       };
 
       const handleChange = (event) => {
@@ -63,6 +65,12 @@ function Signup(){
         </Form>
         <a href='/login'>Already have an account?</a>
         <a href='/'>Back to home</a>
+
+        {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+            )}
     </div>
   )
 }

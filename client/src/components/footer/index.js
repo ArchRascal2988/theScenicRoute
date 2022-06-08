@@ -1,12 +1,11 @@
 import React from "react";
-
-const loggedIn= false;
-//THIS IS GONNA CHANGE TO BE THE AUTH LoggedIn(). FOR TESTING
+import auth from "../../utils/auth";
 
 function Footer(props) {
     
-    const logOut=()=>{
-        console.log('heehheeheh');
+    const logOut=(event)=>{
+        event.preventDefault()
+        auth.logout();
     }
 
     if(props.none){
@@ -17,7 +16,7 @@ function Footer(props) {
         )
     }
 
-    if(loggedIn){
+    if(auth.loggedIn()){
         if(props.type==='dash'){
             return (
                 <footer className="footer">
