@@ -10,54 +10,23 @@ function RouteInfo() {
 
   
   return (
-   
-<div>
-  <h2 className = "routeName"></h2>
-  {/* <div className="dropdown">
-<button className={`dropbtn ${difficulty}`}></button>
-                    <div className="dropdown-content">
-                        <p onClick={() => setDiff(difficultyLevel[0])}>Easy</p>
-                        <p onClick={() => setDiff(difficultyLevel[1])}>Moderate</p>
-                        <p onClick={() => setDiff(difficultyLevel[2])}>Hard</p>
-                        <p onClick={() => setDiff(difficultyLevel[2])}>Madman</p>
-                   
-
-
-                        </div>
-
-
-
-
-        
-        
-        
-                        </div> */}
-<div> 
-
-<h2> className= "Difficulty"</h2>
-
-
-<h2> className= "Length"</h2>
-
-
-
-
-<h2> className= "CreatedBy"</h2>
-
-
-
-<h2> className= "CreatedOn"</h2>
-
-
-
-<h2> className= "Tags"</h2>
-
-
-
-<h2> className= "Reviews Rating"</h2>
-</div>
-</div>
-
+    <section>
+      <div>
+        <h2 className = "routeName">ex name</h2>
+        <p>upArr</p>
+        <p>downArr</p>
+      </div>
+      <div>
+        <ul>
+          <li>Difficulty: Ez</li>
+          <li>Length: Ez</li>
+          <li>Created By: Ez</li>
+          <li>Created On: Ez</li>
+          <li>Tags: Ez</li>
+        </ul>
+        <h5>Reviews</h5>
+      </div>
+    </section>
  )};
 
  export default RouteInfo; 
