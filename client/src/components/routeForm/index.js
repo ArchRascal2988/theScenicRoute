@@ -4,14 +4,14 @@ function RouteForm(props) {
 
     const [difficulty, setDiff] = useState("");
     //these will be added in the database
-    const difficultyLevel = [easy, moderate, hard, madman]
+    const difficultyLevel = ["easy", "moderate", "hard", "madman"]
     //length will be generated from the route? How not sure...
     const [length, setLength] = useState("");
     const [description, setDescription] = useState("");
     const [rating, setRating] = useState("");
     const [tags, setTags] = useState("");
     //these will added in the database
-    const tagNames = [paved, forest, dog - friendly, kid - friendly, wheelchair - friendly, walking, running, views]
+    const tagNames = ["paved", "forest", "dog-friendly"," kid-friendly", "wheelchair-friendly", "walking", "running", "views"]
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -49,14 +49,14 @@ function RouteForm(props) {
                         <p onClick={() => setDiff(difficultyLevel[0])}>Easy</p>
                         <p onClick={() => setDiff(difficultyLevel[1])}>Moderate</p>
                         <p onClick={() => setDiff(difficultyLevel[2])}>Hard</p>
-                        <p onClick={() => setDiff(difficultyLevel[2])}>Madman</p>
+                        <p onClick={() => setDiff(difficultyLevel[3])}>Madman</p>
                     </div>
                 </div>
                 {/* Length will be possibly dynamic when route is being created */}
                 <input
                     type="text"
                     placeholder="Length of Route"
-                    value={input}
+                    value={length}
                     name="text"
                     className="route-length"
                     onChange={handleChange}
@@ -64,7 +64,7 @@ function RouteForm(props) {
                 <input
                     type="text"
                     placeholder="Insert Description of Route"
-                    value={input}
+                    value={description}
                     name="text"
                     className="route-description"
                     onChange={handleChange}
@@ -73,7 +73,7 @@ function RouteForm(props) {
                 <input
                     type="text"
                     placeholder="Rate Route"
-                    value={input}
+                    value={rating}
                     name="text"
                     className="route-rating"
                     onChange={handleChange}

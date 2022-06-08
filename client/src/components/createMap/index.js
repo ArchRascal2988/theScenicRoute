@@ -1,30 +1,21 @@
 import React from "react";
 
-
 import { useRef, useEffect, useState } from 'react';
 
-//This will stay most likely
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
 const CreateMap= ()=>{
-    //map state init
-const mapContainer = useRef(null);
-const map = useRef(null);
-const [lng, setLng] = useState(-70.9);
-const [lat, setLat] = useState(42.35);
-const [zoom, setZoom] = useState(9);
-const[geoData, setGData] = useState({});
-
-
-useEffect(() => {
-  const mapContainer = useRef(null);
+    
+    const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
+    const[geoData, setGData] = useState({});
 
 
     useEffect(() => {
@@ -82,7 +73,6 @@ useEffect(() => {
         
 
     });
-});
 
 
 const finiHandler= (e) =>{
@@ -96,8 +86,8 @@ const finiHandler= (e) =>{
     <div>
         <div ref={mapContainer} className="map-container" />
         <button onClick={finiHandler}>All finished?</button>
+        <section className="controls"> <p>Controls: Bar on top right to change edit mode. Click to add a point, double click to finalize a route, and click the button when all finished.</p></section>
     </div>
-    
   )
     
 }

@@ -1,6 +1,15 @@
 import './App.css';
 import React from 'react';
 
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import LogSign from './pages/LogSign';
+import Home from './pages/Home';
+import Dash from './pages/Dash';
+import Create from './pages/Create';
+import SRoute from './pages/SRoute';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -49,7 +58,7 @@ function App() {
               path="/" 
               element={<Home />} 
             />
-            {/* <Route 
+            { <Route 
               path="/dashboard" 
               element={<Dash />} 
             />
@@ -59,8 +68,8 @@ function App() {
             />
             <Route 
               path="/route/:routeId" 
-              element={<Route />} 
-            /> */}
+              element={<SRoute />} 
+            />
             <Route
             path= '/login'
             element={<LogSign type='login' />}
