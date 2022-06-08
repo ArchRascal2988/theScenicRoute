@@ -40,19 +40,11 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ROUTES = gql`
-    query getRoutes{
+    {
         routes{
-            _id
-            geometry
             description
-            difficultyLevel
-            title
-            votes
-            userId
-            tags
-            notes
         }
-    }
+  }
 `;
 
 export const QUERY_SINGLE_ROUTE = gql`
