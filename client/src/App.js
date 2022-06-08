@@ -1,22 +1,22 @@
 import './App.css';
 import React from 'react';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import LogSign from './pages/LogSign';
-import Home from './pages/Home';
-import Dash from './pages/Dash';
-import Create from './pages/Create';
-import Route from './pages/Route';
-
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from "@apollo/client";
+} from '@apollo/client';
 
-import {setContext} from '@apollo/client/link/context';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import LogSign from './pages/LogSign';
+import Home from './pages/Home';
+// import Dash from './pages/Dash';
+// import Create from './pages/Create';
+// import Route from './pages/Route';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -36,7 +36,6 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
@@ -50,7 +49,7 @@ function App() {
               path="/" 
               element={<Home />} 
             />
-            <Route 
+            {/* <Route 
               path="/dashboard" 
               element={<Dash />} 
             />
@@ -61,7 +60,7 @@ function App() {
             <Route 
               path="/route/:routeId" 
               element={<Route />} 
-            />
+            /> */}
             <Route
             path= '/login'
             element={<LogSign type='login' />}

@@ -1,4 +1,4 @@
-import {React, useState }from "react";
+import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button'
 
@@ -7,14 +7,31 @@ import { ADD_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const Signup= ()=>{
+function Signup(){
     const [formState, setFormState] = useState({
         username: '',
         email: '',
         password: '',
       });
-      const [addUser, { error, data }] = useMutation(ADD_USER);
+      const [addUser, {error}] = useMutation(ADD_USER);
     
+    
+      const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        console.log(formState);
+    
+          const  {data}  = await addUser({
+             variables: {
+               username: formState.username,
+               email: formState.email,
+               password: formState.password,
+             }
+          });
+          console.log(data)
+          Auth.login(data.addUser.token);
+      
+      };
+
       const handleChange = (event) => {
         const { name, value } = event.target;
     
@@ -22,26 +39,6 @@ const Signup= ()=>{
           ...formState,
           [name]: value,
         });
-      };
-    
-      const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formState);
-    
-        try {
-          const { data } = await addUser({
-             ...formState 
-          });
-    
-          Auth.login(data.addUser.token);
-        } catch (e) {
-          console.error(e);
-        }
-
-        setFormState({
-            email: '',
-            password: '',
-          });
       };
     
     return (
@@ -54,7 +51,7 @@ const Signup= ()=>{
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Username</Form.Label>
-                <Form.Control className="usernInput" type="username" name='username' placeholder="Enter username" value={formState.username} onChange={handleChange}/>
+                <Form.Control className="usernameInput" type="username" name='username' placeholder="Enter username" value={formState.username} onChange={handleChange}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
