@@ -5,7 +5,7 @@ import RouteItem from '../routeInfo/index'
 const RouteList = ({ routes }) => {
   // Create a list of rendered IssueItems by using the map method on `routes`
   const renderedList = routes.map((route) => {
-    return <RouteItem key={route.id} route={route} />;
+    return <RouteItem key={route.id} route={route.title} />;
   });
 
   // Return our array of RouteItems wrapped inside a parent div
