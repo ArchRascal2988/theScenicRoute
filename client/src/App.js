@@ -3,7 +3,7 @@ import React from 'react';
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { setContext } from '@apollo/client/link/context';
 import LogSign from './pages/LogSign';
 import Home from './pages/Home';
 import Dash from './pages/Dash';
@@ -17,14 +17,10 @@ import {
   createHttpLink,
 } from '@apollo/client';
 
-import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import LogSign from './pages/LogSign';
-import Home from './pages/Home';
-// import Dash from './pages/Dash';
-// import Create from './pages/Create';
-// import Route from './pages/Route';
+
+
+
 
 
 const httpLink = createHttpLink({
@@ -58,7 +54,7 @@ function App() {
               path="/" 
               element={<Home />} 
             />
-            { <Route 
+            <Route 
               path="/dashboard" 
               element={<Dash />} 
             />
@@ -74,10 +70,7 @@ function App() {
             path= '/login'
             element={<LogSign type='login' />}
             />
-            <Route
-            path= '/signup'
-            element={<LogSign type='signup' />}
-            />
+
           </Routes>
     </Router>
     </ApolloProvider>
