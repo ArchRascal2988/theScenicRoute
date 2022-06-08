@@ -17,7 +17,7 @@ type Auth {
 
 type Route {
   _id: ID
-  geometry:[Int]!
+  geometry:[String]!
   description:String
   difficultyLevel:Int!
   title:String!
@@ -56,8 +56,7 @@ type Mutation {
         ): Auth
     addRoute(
       userId: String!
-      routeName: String!
-      geometry: [Int]!
+      geometry: [String]!
       description: String!
       title: String
       difficultyLevel: Int!
