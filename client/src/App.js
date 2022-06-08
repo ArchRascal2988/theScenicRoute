@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LogSign from './pages/LogSign';
 import Home from './pages/Home';
 import Dash from './pages/Dash';
-// import Create from './pages/Create';
+import Create from './pages/Create';
+import Route from './pages/Route';
 
 import {
   ApolloClient,
@@ -53,10 +54,14 @@ function App() {
               path="/dashboard" 
               element={<Dash />} 
             />
-            {/* <Route 
+            <Route 
               path="/create" 
               element={<Create />} 
-            /> */}
+            />
+            <Route 
+              path="/route/:routeId" 
+              element={<Route />} 
+            />
             <Route
             path= '/login'
             element={<LogSign type='login' />}

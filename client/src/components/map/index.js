@@ -81,12 +81,26 @@ const Map= ()=>{
                 'source': 'my-data',
                 'paint': {
                     'line-width': 5,
-                    // Use a get expression (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-get)
-                    // to set the line-color to a feature property value.
                     'line-color': 'red'
                 },
                 "minzoom": 12
             });
+
+            map.on('click', 'my-data-layer', (e) => {
+                const coordinates = e.features[0].geometry.coordinates.slice();
+                //THIS IS WHERE THE POPUP IS BEING RENDERED. WE NEED TO HOOK INTO OUR DATA KEYS 
+                
+                 
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+                 
+                new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(`<a href='/route'`) //<-----WE ARE NOT GOING TO HAVE A COMPONET FOR THIS. HTML FOR POPUP HERE. Right now it just links to route page
+                //(IMPORTATNT: Whatever href we use for the link it needs the route id in the url like so-> /route/ab2343)
+                .addTo(map.current);
+                });
         });
 
         
