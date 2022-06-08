@@ -5,24 +5,25 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         user: async (parent, { userId }) => {
-            return User.findById({ _id: userId }).populate('routes')
+            return await User.findById({ _id: userId }).populate('routes')
         },
         me: async (parent, args, context)=>{
             if(context.user){
-                return User.findOne({_id: context.user._id}).populate('routes')
+                return await User.findOne({_id: context.user._id}).populate('routes')
           ;
             }
             throw new AuthenticationError('You need to be logged in!')
         },
         routes: async () => {
-            return Route.find().populate('notes')
+            return await Route.find()
+            .populate('notes')
         },
         singleRoute: async (parent, { routeId }) => {
-            return Route.findOne({ _id: routeId }).populate('notes')
+            return await Route.findOne({ _id: routeId }).populate('notes')
         },
         //find all user routes by userId
         userRoutes: async (parent, { userId }) => {
-            return Route.findById({_id: userId}).populate('notes')
+            return await Route.findById({_id: userId}).populate('notes')
         }
     },
     Mutation: {

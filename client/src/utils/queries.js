@@ -40,8 +40,24 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ROUTES = gql`
-    query getRoutes{
+    {
         routes{
+            # _id
+            # geometry
+            description
+            # difficultyLevel
+            # title
+            # votes
+            # userId
+            # tags
+            # notes
+        }
+    }
+`;
+
+export const QUERY_SINGLE_ROUTE = gql`
+    query singleRoute($routeId: ID){
+        singleRoute(routeId: $routeId){
             _id
             geometry
             description
@@ -55,24 +71,8 @@ export const QUERY_ROUTES = gql`
     }
 `;
 
-export const QUERY_SINGLE_ROUTE = gql`
-    query getSingleRoutes($routeId: ID){
-        route(routeId: $routeId){
-            _id
-            geometry
-            description
-            difficultyLevel
-            title
-            votes
-            userId
-            tags
-            notes
-        }
-    }
-`
-
 export const QUERY_USER_ROUTES = gql`
-    query getUserRoutes($userId: ID){
+    query userRoute($userId: ID){
         userRoute(userId: $userId){
             _id
             geometry
@@ -85,5 +85,5 @@ export const QUERY_USER_ROUTES = gql`
             notes
         }
     }
-`
+`;
 

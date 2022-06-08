@@ -14,8 +14,7 @@ const noteSchema = new Schema(
             type:String
         },
         routeId:{
-            type: Schema.Types.ObjectId,
-            ref: 'Route',
+            type: String,
             required: true
         }
     }

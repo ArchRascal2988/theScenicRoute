@@ -32,7 +32,7 @@ type Note {
   routePoints: [Int]
   image:String
   content:String!
-  routeId:Route!
+  routeId:String!
 }
 
 

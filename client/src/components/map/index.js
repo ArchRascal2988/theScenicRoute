@@ -13,10 +13,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhb
 
 const Map= ()=>{
 
-    const [allRoutes, {error, data}]= useQuery(QUERY_ROUTES);
+    const [routes, {error, data}]= useQuery(QUERY_ROUTES);
 
     const getGeoData= async ()=>{
-        const {data}= await allRoutes;
+        const {data}= await routes;
         console.log(data);
     }   
 
