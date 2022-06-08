@@ -1,5 +1,5 @@
 import React from 'react';
-import RouteItem from '../route/index'
+import RouteItem from '../routeInfo/index'
 
 // Accept an array of routes as a prop
 const RouteList = ({ routes }) => {

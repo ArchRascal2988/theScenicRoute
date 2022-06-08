@@ -1,13 +1,36 @@
 import React from "react";
 
-function Footer() {
+const loggedIn= true;
+//THIS IS GONNA CHANGE TO BE THE AUTH LoggedIn(). FOR TESTING
+let btns;
+loggedIn? btns = (
+    <section className="footBtnsContainer">
+        <a className="footBtn" href='/login'>Logout</a>
+        <a className="footBtn" href='/dash'>Dashboard</a>
+    </section>
+        
+    )
+    :btns=(
+    <section className="footBtnsContainer">
+        <a className="footBtn" href='/login'>Login</a>
+        <a className="footBtn" href='/Singup'>Signup</a>
+    </section>
+    );
+
+
+function Footer(props) {
+    if(props.none){
+        return(
+            <footer className="footer">
+                <h1>The Scenic Route</h1>
+            </footer>
+        )
+    }
   return (
     <footer className="footer">
-        <a href='/login'>Login</a>
-        <a href='/signup'>Signup</a>
-
-      <h4>About Us </h4>
-        <p>INSPIRING ASS SYNopsis</p>
+        {btns}
+        <h1>The Scenic Route</h1>
+        <a href='/about'>About Us</a>
     </footer>
   );
 }
