@@ -9,7 +9,7 @@ const Home = () =>{
         <main>
             <Header />
             
-            <Map type='' />
+            <Map />
             
             <Footer />
         </main>

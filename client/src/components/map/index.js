@@ -2,7 +2,8 @@ import React from "react";
 
 
 import { useRef, useEffect, useState } from 'react';
-
+import{ QUERY_ROUTES } from '../../utils/queries';
+import{ useQuery } from '@apollo/client';
 
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -10,12 +11,22 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
 
-const Map= (props)=>{
+const Map= ()=>{
+
+    const [allRoutes, {error, data}]= useQuery(QUERY_ROUTES);
+
+    const getGeoData= async ()=>{
+        const {data}= await allRoutes;
+        console.log(data);
+    }   
+
+
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
+    const [geoData, setGeodata]= useState([]);
 
     useEffect(() => {
         if (map.current) return;
@@ -24,7 +35,6 @@ const Map= (props)=>{
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
             zoom: zoom
-        
         
         })
     
@@ -44,6 +54,7 @@ const Map= (props)=>{
         map.current.addControl(geocoder, 'top-left');    
     
         map.current.on('load', () => {
+            getGeoData();
             map.current.addSource('my-data', {
                 "type": "geojson",
                 "data": {
