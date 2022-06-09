@@ -7,8 +7,8 @@ function RouteInfo({description, difficultyLevel, notes, tags, title, userId, vo
       <div>
         <h2 className = "routeName">{title}</h2>
         <p>{votes}</p>
-        <p>upArr</p>
-        <p>downArr</p>
+        <button className="btn btn-info" onClick={() => upVote(0)}>👍</button>
+        <button className="btn btn-info" onClick={() => downVote(0)}>👎</button>
       </div>
       <div>
         <p>{description}</p>
@@ -19,6 +19,7 @@ function RouteInfo({description, difficultyLevel, notes, tags, title, userId, vo
         </ul>
       </div>
     </section>
- )};
+   )
+}
 
  export default RouteInfo; 

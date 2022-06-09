@@ -1,0 +1,9 @@
+.mapboxgl-ctrl-geocoder--pin-right{
+    display: none;
+}
+.mapboxgl-ctrl-attrib-inner{
+    display: none;
+}
+a.mapboxgl-ctrl-logo{
+    background-color: transparent;
+}

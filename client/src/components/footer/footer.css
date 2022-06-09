@@ -1,0 +1,27 @@
+footer {
+    background-color: #48639C;
+    color:rgb(255, 157, 0);
+    position: fixed;
+   display: flex;
+   bottom: 0;
+   width: 100%;
+   align-items: center;
+   justify-content: space-between;
+   padding: 3%;
+  }
+.footBtn{
+    background-color: #6B985D;
+    text-decoration: none;
+    margin:8%;
+    padding: 20%;
+    border-radius: 6px;
+  }
+section.footBtnsContainer{
+    margin: 0;
+    border: none;
+}
+.aboutUs{
+    padding: 2%;
+    background-color: var(--green);
+    border-radius: 6px;
+}

@@ -24,7 +24,7 @@ padding: 5px;
 }
 .geocoder-dropdown-icon {
 margin-right: 10px;
-/* background-color:red; */
+
 }
 .geocoder-dropdown-text {
 color: var(--white);
@@ -42,50 +42,16 @@ border-radius: 1.6px;
   display: none;
 }
 
-.footer {
-  padding:5px;
-  background-color: #48639C;
-  color:rgb(255, 157, 0);
-  text-align: center;
-position: fixed;
- margin-top: 50px;
- /* border:solid red; */
- display: flex;
- bottom: 0;
- width: 100%;
-}
+.map-container {
+  height: 400px;
+  }
 
 
-.header{
-  padding: 13px;
-  background-color:#6B985D;
-  margin: auto;
-  margin-bottom: 50px;
-  /* border:solid red */
-}
 
-/* .logo{
-  align-content: center;
-} */
-
-footBtn{
-  text-align: left;
-  background-color: #6B985D;
- 
-}
-
-body{
-  /* background-color: #FFD041; */
-  /* border:solid rgb(251, 0, 255); */
-  margin: 50 auto;
-  padding: 20px;
-  height: fit-content;
-  min-height: 50vh;
-  height: 5px;
-}
 #root{
   border: solid rgb(27, 40, 8);
-  background-color:#FFD041
+  background-color:#FFD041;
+  height: 100vh;
 }
 
 
@@ -97,12 +63,17 @@ body{
 a{
   background-color:#6B985D;
   color:rgb(240, 247, 244);
-  margin: 5px 5px 5px 5px;
-  height: 2rem
+  text-decoration: none;
+  /* margin: 5px 5px 5px 5px;
+  height: 2rem */
 
 
 }
 
+section{
+  margin: 5%;
+  border: black solid
+}
 
 
 /* ul.suggestions {
@@ -111,5 +82,19 @@ a{
   border-radius: 1.6px;
 
 } */
+   
+.sidebar {
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  border-radius: 4px;
+  }
+
 
 

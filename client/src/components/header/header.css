@@ -1,0 +1,8 @@
+header{
+    display: flex;
+    justify-content: center;
+    padding: 13px;
+    background-color:#6B985D;
+    margin: auto;
+    margin-bottom: 50px;
+}

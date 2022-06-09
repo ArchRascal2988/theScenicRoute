@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./map.css"
 import { useRef, useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
@@ -50,6 +50,7 @@ const Map= (props)=>{
         map.current.on('load', () => {
             console.log(def);
             map.current.addSource('my-data', {
+
                 'type': 'geojson',
                 'data': def
             })  
