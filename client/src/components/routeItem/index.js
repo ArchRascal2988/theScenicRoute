@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const RouteItem = ({ userRoutes }) => {
 
-
   const upVote = async (vote) => {
     const [createVote, { error }] = useMutation(UPVOTE);
     try {
@@ -31,7 +30,7 @@ const RouteItem = ({ userRoutes }) => {
 
   return (
     // will route to single route page
-      <Link to="/route/:routeId">
+    <Link className="btn" to={`/route/${route.id}`}>
       <h2>{userRoutes.title}</h2>
       <button className="btn btn-info" onClick={() => upVote(0)}>👍</button>
       <button className="btn btn-info" onClick={() => downVote(0)}>👎</button>
