@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useState } from "react"
 
+import { ADD_ROUTE } from "../../utils/mutations"
 function RouteForm(props) {
 
     const [difficulty, setDiff] = useState("");
     //these will be added in the database
     const difficultyLevel = ["easy", "moderate", "hard", "madman"]
-    //length will be generated from the route? How not sure...
-    const [length, setLength] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [rating, setRating] = useState("");
     const [tags, setTags] = useState("");
     const [notes, setNotes] = useState("");
     const [points, setPoints] =useState("");
@@ -26,32 +24,19 @@ function RouteForm(props) {
         e.preventDefault();
 
         props.onSubmit({
-            id: Math.random(Math.floor() * 1000),
             title: title,
             difficulty: difficulty,
             description: description,
-            length: length,
-            rating: rating,
             tags: tags,
             notes: notes
         });
 
         setTitle('');
         setDiff('');
-        setLength('');
         setDescription('');
-        setRating('');
         setTags('');
-        setNotes('');
     }
 
-
-    // this takes the user typed inputs and sets Description & Rating
-    // Difficulty and Tags will be chosen in the "return" below   
-    const handleChange = (e) => {
-        setDescription(e.target.value);
-        setRating(e.target.value);
-    };
 
     return (
         <div>
@@ -60,9 +45,10 @@ function RouteForm(props) {
                 placeholder="Title of Route"
                 value={title}
                 name="text"
-                className="route-rating"
-                onChange={handleChange}
+                className="route-title"
+                onChange={(event) => setTitle(event.target.value)}
             ></input>
+            
             <form className="route-form" onSubmit={handleSubmit}>
                 <div className="dropdown">
                     <button className={`dropbtn ${difficulty}`}></button>
@@ -73,30 +59,13 @@ function RouteForm(props) {
                         <p onClick={() => setDiff(difficultyLevel[3])}>Madman</p>
                     </div>
                 </div>
-                {/* Length will be possibly dynamic when route is being created */}
-                <input
-                    type="text"
-                    placeholder="Length of Route"
-                    value={length}
-                    name="text"
-                    className="route-length"
-                    onChange={handleChange}
-                ></input>
                 <input
                     type="text"
                     placeholder="Insert Description of Route"
                     value={description}
                     name="text"
                     className="route-description"
-                    onChange={handleChange}
-                ></input>
-                <input
-                    type="text"
-                    placeholder="Rate Route out of 10"
-                    value={rating}
-                    name="text"
-                    className="route-rating"
-                    onChange={handleChange}
+                    onChange={(event) => setDescription(event.target.value)}
                 ></input>
                 <input
                     type="text"
@@ -104,7 +73,7 @@ function RouteForm(props) {
                     value={tags}
                     name="text"
                     className="route-tags"
-                    onChange={handleChange}
+                    onChange={(event) => setTags(event.target.value)}
                 ></input>
                 {/* Set this notes part of the form to an event listener: double click to display this part of the form */}
                     {/* <div className="dropdown">
