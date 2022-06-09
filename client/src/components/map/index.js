@@ -3,6 +3,9 @@ import React from "react";
 
 import { useRef, useEffect, useState } from 'react';
 
+import { useQuery } from '@apollo/client';
+import { QUERY_ROUTES } from '../../utils/queries';
+
 
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -92,7 +95,7 @@ const Map= ()=>{
                 "minzoom": 12
             });
 
-            map.on('click', 'my-data-layer', (e) => {
+            map.current.on('click', 'my-data-layer', (e) => {
                 const coordinates = e.features[0].geometry.coordinates.slice();
                 //THIS IS WHERE THE POPUP IS BEING RENDERED. WE NEED TO HOOK INTO OUR DATA KEYS 
                 
