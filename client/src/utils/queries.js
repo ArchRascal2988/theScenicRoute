@@ -20,7 +20,7 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_USER = gql`
-query Query($userId: ID!) {
+query ($userId: ID!) {
   user(id: $userId) {
     username
     email
@@ -51,10 +51,11 @@ query Query($singleRouteId: ID!) {
     description
     difficultyLevel
     title
-    userId
     votes
+    userId
     tags
     notes {
+      routePoints
       image
       content
     }

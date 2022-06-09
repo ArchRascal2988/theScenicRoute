@@ -12,7 +12,7 @@ db.once('open', async () => {
   "difficultyLevel": 1,
   "votes": 0,
   "title": "honeymoon osprey trail",
-  "userId": '62a2605beea2ef24b0524c9e',
+  "userId": '62a26587be4ee9e47c3edf67',
   "tags": "pizza",
   "notes": [],
 
@@ -27,7 +27,7 @@ db.once('open', async () => {
   "difficultyLevel": 1,
   "votes": 0,
   "title": "honeymoon pet beach walk",
-  "userId": '62a2605beea2ef24b0524c9e',
+  "userId": '62a26587be4ee9e47c3edf67',
   "tags": "pizza",
   "notes": [],
             },
@@ -41,7 +41,7 @@ db.once('open', async () => {
   "difficultyLevel": 1,
   "votes": 0,
   "title": "the scenic walk on honeymoon island",
-  "userId": '62a2605beea2ef24b0524c9e',
+  "userId": '62a26587be4ee9e47c3edf67',
   "tags": "pizza",
   "notes": [],
 
@@ -55,7 +55,7 @@ db.once('open', async () => {
   "difficultyLevel": 4,
   "votes": 0,
   "title": "get to swimming",
-  "userId": '62a2605beea2ef24b0524c9e',
+  "userId": '62a26587be4ee9e47c3edf67',
   "tags": "pizza",
   "notes": [],
 
