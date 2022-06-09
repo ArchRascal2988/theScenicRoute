@@ -13,14 +13,15 @@ import { QUERY_SINGLE_ROUTE } from '../utils/queries';
 
 const SRoute= () =>{
     const {routeId}= useParams();
-    console.log(routeId);
     let routeData;
     const {loading, data}= useQuery(QUERY_SINGLE_ROUTE,{
         variables:{
             "singleRouteId": routeId
         }})
     if(!loading){
-        routeData= data;
+        console.log(data)
+        routeData= data.singleRoute;
+        console.log(routeData);
     }
 
 
@@ -29,9 +30,13 @@ const SRoute= () =>{
             <Header />
             <div className="singleRoute">
             <Map />
+
+            {!loading ? <RouteInfo info={routeData} />
+            :<RouteInfo info='' />
+            }
             
-            <RouteInfo data={routeData} />
             </div>
+
             <Footer />
         </main>
     )
