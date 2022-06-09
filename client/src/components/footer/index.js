@@ -1,6 +1,6 @@
 import React from "react";
 import auth from "../../utils/auth";
-
+import "./footer.css"
 function Footer(props) {
     
     const logOut=(event)=>{
@@ -46,7 +46,9 @@ function Footer(props) {
                 <a className="footBtn" href='/signup'>Signup</a>
             </section>
             <h1>The Scenic Route</h1>
+            <div className="aboutUs">
             <a href='/about'>About Us</a>
+            </div>
         </footer>)
     }
 }

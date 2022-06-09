@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./map.css"
 import { useRef, useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
