@@ -6,6 +6,7 @@ import { useRef, useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ROUTES } from '../../utils/queries';
 
+import GeoJSON from 'geojson';
 
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -18,16 +19,8 @@ const Map= ()=>{
     const allRoutesData =  data?.routes || ['error'];
     let coordsData;
     if(!loading){
-        coordsData= allRoutesData.map((route)=>{
-            const rawGeo= {
-                    type: "Feature",
-                    geometry: {
-                        type: "LineString",
-                        coordinates: route.geometry
-                    },
-            };
-            return JSON.stringify(rawGeo);
-        })
+        console.log(allRoutesData);
+        coordsData= GeoJSON.parse(allRoutesData, {'LineString': 'geometry'});
     }
     
     console.log(coordsData);
@@ -60,18 +53,13 @@ const Map= ()=>{
             }
         });
       
-
         map.current.addControl(new mapboxgl.GeolocateControl({trackUserLocation: false}),'top-right');
         map.current.addControl(geocoder, 'top-left');    
     
         map.current.on('load', () => {
             map.current.addSource('my-data', {
-                "type": "geojson",
-                "data": {
-                    'type': 'FeatureCollection',
-                    'features': coordsData
-                }
-
+                type: 'geojson',
+                data: coordsData
             })
 
             geocoder.setRenderFunction((item) =>{
