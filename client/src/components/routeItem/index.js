@@ -1,48 +1,41 @@
-import { route } from 'express/lib/application';
 import React from 'react';
-import RouteItem from '../routeInfo/index'
+import { useMutation } from '@apollo/client';
+import { UPVOTE, DOWNVOTE } from '../../utils/mutations';
+import { Link } from 'react-router-dom';
 
-const RouteItem = ({ routes }) => {
+const RouteItem = ({ userRoutes }) => {
 
-  // const handleVote = async (techNum) => {
-  //   try {
-  //     const res = await createVote({ id, techNum });
 
-  //     if (!res.ok) {
-  //       throw new Error('Could not vote');
-  //     }
+  const upVote = async (vote) => {
+    const [createVote, { error }] = useMutation(UPVOTE);
+    try {
+      await createVote({
+        variables: { _id: id, vote: vote },
+      });
+    } catch (err) {
+      console.error(error);
+    }
+  }
 
-  //     const matchup = await res.json();
-  //     console.log(matchup);
-  //     setMatchup(matchup);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-
-  //   const handleVote = async (techNum) => {
-  //     try {
-  //       const res = await createVote({ id, techNum });
-  
-  //       if (!res.ok) {
-  //         throw new Error('Could not vote');
-  //       }
-  
-  //       const matchup = await res.json();
-  //       console.log(matchup);
-  //       setMatchup(matchup);
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-
+    const downVote = async (vote) => {
+      const [createVote, { error }] = useMutation(DOWNVOTE);
+      try {
+        await createVote({
+          variables: { _id: id, vote: vote },
+        });
+      } catch (err) {
+        console.error(error);
+      }
+    }
 
 
   return (
-      <h2>{route.title}</h2>
-      // <div>
-      // <p onClick={}> ✏️</p>
-      // <p onClick={}> 🗑️</p>
-      // </div>
-
+    // will route to single route page
+      <Link to="/route/:routeId">
+      <h2>{userRoutes.title}</h2>
+      <button className="btn btn-info" onClick={() => upVote(0)}>👍</button>
+      <button className="btn btn-info" onClick={() => downVote(0)}>👎</button>
+      </Link>
   )
 };
 
