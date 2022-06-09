@@ -4,7 +4,7 @@ const routeSchema = new Schema(
     {
         geometry:[
             [{
-                type: String
+                type: Number
             }]
         ],
         description:{
