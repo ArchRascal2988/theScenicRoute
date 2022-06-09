@@ -22,7 +22,6 @@ function Footer(props) {
                 <footer className="footer">
                     <section className="footBtnsContainer">
                         <a className="footBtn" onClick={logOut} href='/'>Logout</a>
-                        <a className="footBtn" href='/'>Home</a>
                     </section>
                     <h1>The Scenic Route</h1>
                     <a href='/about'>About Us</a>
@@ -33,7 +32,7 @@ function Footer(props) {
             <footer className="footer">
                 <section className="footBtnsContainer">
                     <a className="footBtn" onClick={logOut} href='/'>Logout</a>
-                    <a className="footBtn" href='/dashboard'>Dashboard</a>
+                    <a className="footBtn" href='/me'>Dashboard</a>
                 </section>
                 <h1>The Scenic Route</h1>
                 <a href='/about'>About Us</a>
