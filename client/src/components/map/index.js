@@ -10,18 +10,20 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhb
 
 const Map= (props)=>{
     const def= props.data;
+    console.log(def);
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
     const [geoData, setGeoData]= useState(def);
-
     console.log(geoData);
+
 
 
     useEffect(() => {
         console.log(geoData);
+        console.log(def);
         if (map.current) return;
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
@@ -46,65 +48,10 @@ const Map= (props)=>{
        
         
         map.current.on('load', () => {
-            console.log(geoData);
+            console.log(def);
             map.current.addSource('my-data', {
-
                 'type': 'geojson',
-                'data': {
-                    'type': 'FeatureCollection',
-                    'features' : [
-                        {
-                            'type': 'Feature',
-                            'geometry': {
-                            'type': 'LineString',
-                            'coordinates': [
-                            [-82.83021136401497, 28.068731057081955],
-                            [-82.82967443530357, 28.083403159176612]
-                            ]
-                            }
-                        },
-                        {
-                            'type': 'Feature',
-                            'geometry': {
-                            'type': 'LineString',
-                            'coordinates': [
-                            [-82.83021136401497, 28.068731057081955],
-                            [-82.8212915979806, 28.055378742072214],
-                            [-82.81666529308482, 28.055207261232812]
-                            ]
-                            }
-                        },
-                        {
-                            'type': 'Feature',
-                            'geometry': {
-                            'type': 'LineString',
-                            'coordinates': [
-                            [-82.83320554661061, 28.06567497137443],
-                            [-82.82967443530357, 28.09695289759868]
-                            ]
-                            }
-                        },
-                        {
-                            'type': 'Feature',
-                            'geometry': {
-                            'type': 'LineString',
-                            'coordinates': [
-                            [-82.83420767555651, 28.09898460434573],
-                            ]
-                            }
-                        },
-                        {
-                            'type': 'Feature',
-                            'geometry': {
-                            'type': 'LineString',
-                            'coordinates': [
-                            [-12.1, 30.2],
-                            ]
-                            }
-                        },
-                    ]
-
-                }
+                'data': def
             })  
 
             geocoder.setRenderFunction((item) =>{
@@ -152,7 +99,7 @@ const Map= (props)=>{
                     });
         });
        
-    });
+    }, [def]);
     
     
   return (

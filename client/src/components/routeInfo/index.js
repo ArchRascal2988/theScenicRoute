@@ -2,7 +2,7 @@ import React from "react";
 
 
 function RouteInfo(props) {
-
+  console.log(props.data);
   
   return (
     <section>
