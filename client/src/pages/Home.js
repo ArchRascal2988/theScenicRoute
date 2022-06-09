@@ -3,6 +3,7 @@ import Header from '../components/header/index';
 import Footer from '../components/footer/index';
 import Map from '../components/map/index';
 
+
 import { useQuery } from '@apollo/client';
 import { QUERY_ROUTES } from '../utils/queries';
 import GeoJSON from 'geojson';
