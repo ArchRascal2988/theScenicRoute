@@ -51,14 +51,14 @@ const resolvers = {
         addRoute: async (parent, args) => {
             const createRoute = await Route.create(args);
             const addToUser = await User.findOneAndUpdate(
-                args.routeId, { $addToSet: { routes: createRoute }, new: true }
+                args.routeId, { $addToSet: { routes: createRoute } }, {new: true}
             )
             return { createRoute, addToUser }
         },
         addNote: async (parent, args) => {
             const createNote = await Note.create(args)
             const addToRoute = await Route.findOneAndUpdate(
-                args.routeId, { $addToSet: { notes: createNote._id }, new: true }
+                args.routeId, { $addToSet: { notes: createNote._id }},{new: true}
             )
             return { createNote, addToRoute }
         },
