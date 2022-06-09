@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 import LogSign from './pages/LogSign';
@@ -17,11 +16,15 @@ import {
   createHttpLink,
 } from '@apollo/client';
 
+<<<<<<< HEAD
 
 
 
 
 
+=======
+import { setContext } from '@apollo/client/link/context';
+>>>>>>> 873e3cfb6a0a0e77665b63fc717f7239e375248e
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -54,7 +57,13 @@ function App() {
               path="/" 
               element={<Home />} 
             />
+<<<<<<< HEAD
             <Route 
+=======
+
+           <Route 
+
+>>>>>>> 873e3cfb6a0a0e77665b63fc717f7239e375248e
               path="/dashboard" 
               element={<Dash />} 
             />

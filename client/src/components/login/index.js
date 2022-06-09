@@ -30,9 +30,12 @@ const Login= (props)=>{
         console.log(formState);
         try {
           const { data } = await login({
-
-             ...formState 
+            variables:{
+              username: formState.username,
+              password: formState.password
+            }
           });
+          console.log(data);
           Auth.login(data.login.token);
         } catch (e) {
           console.error(e);
@@ -70,6 +73,12 @@ const Login= (props)=>{
         </Form>
         <a href='/signup'>Dont have an account?</a>
         <a href='/'>Back to home</a>
+
+        {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+            )}
     </div>
   )
 }
