@@ -13,7 +13,7 @@ db.once('open', async () => {
   "votes": 0,
   "title": "honeymoon osprey trail",
   "userId": 1,
-  "tags": [],
+  "tags": "pizza",
   "notes": [],
 
             },
@@ -28,7 +28,7 @@ db.once('open', async () => {
   "votes": 0,
   "title": "honeymoon pet beach walk",
   "userId": 1,
-  "tags": [],
+  "tags": "pizza",
   "notes": [],
             },
   {
@@ -42,7 +42,7 @@ db.once('open', async () => {
   "votes": 0,
   "title": "the scenic walk on honeymoon island",
   "userId": 1,
-  "tags": [],
+  "tags": "pizza",
   "notes": [],
 
             },
@@ -56,7 +56,7 @@ db.once('open', async () => {
   "votes": 0,
   "title": "get to swimming",
   "userId": 1,
-  "tags": [],
+  "tags": "pizza",
   "notes": [],
 
             }

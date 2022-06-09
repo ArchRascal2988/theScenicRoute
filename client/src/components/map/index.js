@@ -48,6 +48,7 @@ const Map= (props)=>{
         map.current.on('load', () => {
             console.log(geoData);
             map.current.addSource('my-data', {
+
                 'type': 'geojson',
                 'data': {
                     'type': 'FeatureCollection',
