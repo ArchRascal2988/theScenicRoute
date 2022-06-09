@@ -13,8 +13,14 @@ import { QUERY_SINGLE_ROUTE } from '../utils/queries';
 
 const SRoute= () =>{
     const {rId}= useParams();
-//API CALL FOR SINGLE ROUTE USING ^^^^
+    let routeData;
+    const {loading, data}= useQuery(QUERY_SINGLE_ROUTE,{
+        variables: rId
+    })
 
+    if(!loading){
+        routeData= data;
+    }
 
     return(
         <main>
@@ -22,7 +28,7 @@ const SRoute= () =>{
             
             <Map />
             
-            <RouteInfo  />
+            <RouteInfo data={routeData} />
     
             <Footer />
         </main>
