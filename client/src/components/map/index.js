@@ -14,15 +14,23 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhb
 const Map= ()=>{
 
     const {loading, data}= useQuery(QUERY_ROUTES);
-    let rData;
+    const allRoutesData =  data?.routes || ['error'];
+    let coordsData;
+    if(!loading){
+        coordsData= allRoutesData.map((route)=>{
+            const rawGeo= {
+                    type: "Feature",
+                    geometry: {
+                        type: "LineString",
+                        coordinates: route.geometry
+                    },
+            };
+            return JSON.stringify(rawGeo);
+        })
+    }
+    
+    console.log(coordsData);
 
-    const getGeoData= async ()=>{
-        if(loading){
-            console.log('...')
-        }
-        rData= data;
-        console.log(rData);
-    }   
 
 
     const mapContainer = useRef(null);
@@ -58,25 +66,13 @@ const Map= ()=>{
         map.current.addControl(geocoder, 'top-left');    
     
         map.current.on('load', () => {
-            getGeoData();
             map.current.addSource('my-data', {
                 "type": "geojson",
                 "data": {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "LineString",
-                        "coordinates": [
-                            [-122.4833858013153, 37.829607404976734],
-                            [-122.4830961227417, 37.82932776098012],
-                            [-122.4830746650696, 37.82932776098012],
-                            [-122.48218417167662, 37.82889558180985],
-                            [-122.48218417167662, 37.82890193740421],
-                            [-122.48221099376678, 37.82868372835086],
-                            [-122.4822163581848, 37.82868372835086],
-                            [-122.48205006122589, 37.82801003030873]
-                        ]
-                    }, //CHANGE ABOVE OBJECT LATER TO BE DYNAMIC
+                    'type': 'FeatureCollection',
+                    'features': coordsData
                 }
+
             })
 
             geocoder.setRenderFunction((item) =>{
