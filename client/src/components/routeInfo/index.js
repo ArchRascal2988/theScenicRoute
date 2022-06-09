@@ -7,8 +7,6 @@ import { UPVOTE, DOWNVOTE } from '../../utils/mutations';
 
 
 import{ useQuery, useMutation } from '@apollo/client';
-import "./routeInfo.css"
-import { Icon } from '@iconify/react';
 
 
 function RouteInfo({info}) {
