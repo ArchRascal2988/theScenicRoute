@@ -57,7 +57,7 @@ type Mutation {
         ): Auth
     addRoute(
       userId: String!
-      geometry: [[String]]!
+      geometry: [[Float]]!
       description: String!
       title: String
       difficultyLevel: Int!
