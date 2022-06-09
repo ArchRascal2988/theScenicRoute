@@ -12,8 +12,13 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser(
+     $username: String!,
+     $email: String!, $password: String!) {
+    addUser(
+      username: $username,
+      email: $email,
+      password: $password) {
       token
       user {
         _id
@@ -24,31 +29,29 @@ export const ADD_USER = gql`
 
 export const ADD_ROUTE = gql`
   mutation addRoute(
-      $userId: String
-      $geometry: [String]!
-      $description: String!
-      $title: String
-      $difficultyLevel: Int!
-      $tags: [String]
+      $userId: String!,
+      $geometry: [[Float]],
+      $description: String!,
+      $title: String,
+      $difficultyLevel: Int!,
+      $tags: String
   ){
     addRoute(
-      userId: $String
-      geometry: $String
-      description: $String
-      title: $String
-      difficultyLevel: $Int
+      userId: $String,
+      geometry: $Float,
+      description: $String,
+      title: $String,
+      difficultyLevel: $Int,
       tags: $String
-    ){
+    ) {
+
       routes{
-            _id
             geometry
             description
             difficultyLevel
             title
-            votes
             userId
             tags
-            notes
     }
     }
   }
@@ -56,16 +59,16 @@ export const ADD_ROUTE = gql`
 
 export const ADD_NOTE = gql`
 mutation addNote(
-      $routePoints: [Int]
-      $image: String
-      $content: String!
-      $routeId: String!
+      $routePoints: [Int],
+      $image: String,
+      $content: String!,
+      $routeId: String!,
       ){
         addNote(
-      routePoints: $Int
-      image: $String
-      content: $String
-      routeId: $String
+      routePoints: $Int,
+      image: $String,
+      content: $String,
+      routeId: $String,
         ){
             notes{
               _id
