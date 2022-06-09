@@ -41,7 +41,6 @@ export const QUERY_USER = gql`
 
 //this is for the homepage map...
 export const QUERY_ROUTES = gql`
-
     query allRoutes{
         routes {
         _id
