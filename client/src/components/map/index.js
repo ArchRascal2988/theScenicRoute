@@ -50,6 +50,7 @@ const Map= (props)=>{
         map.current.on('load', () => {
             console.log(def);
             map.current.addSource('my-data', {
+
                 'type': 'geojson',
                 'data': def
             })  

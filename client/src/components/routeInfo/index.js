@@ -1,6 +1,7 @@
 import React from "react";
 
 
+
 function RouteInfo(props) {
   console.log(props.data);
   
@@ -22,6 +23,7 @@ function RouteInfo(props) {
         <h5>Reviews</h5>
       </div>
     </section>
- )};
+   )
+}
 
  export default RouteInfo; 
