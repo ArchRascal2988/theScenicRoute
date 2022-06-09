@@ -17,7 +17,7 @@ type Auth {
 
 type Route {
   _id: ID
-  geometry:[[String]]!
+  geometry:[[Float]]!
   description:String
   difficultyLevel:Int!
   title:String!
