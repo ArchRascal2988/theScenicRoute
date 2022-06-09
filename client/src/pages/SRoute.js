@@ -14,7 +14,6 @@ import { QUERY_SINGLE_ROUTE } from '../utils/queries';
 const SRoute= () =>{
     const {rId}= useParams();
 //API CALL FOR SINGLE ROUTE USING ^^^^
-const [findURoutes, { error, data }] = useQuery(QUERY_SINGLE_ROUTE);
 
 
     return(
