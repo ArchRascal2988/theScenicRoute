@@ -1,5 +1,6 @@
 .routeName{
     color: red;
+    font-size: 50px;
 }
 
 .singleRoute{
@@ -10,27 +11,58 @@
 }
 
 .routeInfoBox{
-    margin: 0%;
     min-width: 35vh;
     flex-grow: 1;
-    margin: 1%;
+    /* margin: 1%; */
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-flow: column;
     align-items: center;
+    border: none;
 }
+.topHeader{
+    display: flex;
+    width: 64%;
+    justify-content: space-evenly;
+    margin-bottom: 2%;
+    border: solid black;
+    align-items: center;
+    background-color: var(--white);
 
-.routeName{
-    display: inline;
 }
+.routeInformation{
+    border: solid;
+    width: 64%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 2;
+    background-color: var(--white);
+
+}
+/* .routeName{
+    display: inline;
+}*/
 .votes{
-    display: inline;
-}
+   margin-left: 2%;
+} 
 /* map styling for the single route is also here */
 .mapBox{
     min-width: 70vh;
+    min-height: 40vh;
     margin:0;
-    flex-grow: 2;
+    flex-grow: 3;
     margin: 1%;
+    margin-bottom: 4%;
+  }
+  ul{
+      margin-top: 2%;
+      margin-bottom: 2%;
+    list-style-type: none;
   } 
-
+  .map-container{
+      height: 100%;
+  }
+li{
+font-size: 24px;
+}

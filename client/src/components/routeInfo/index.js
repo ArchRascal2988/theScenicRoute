@@ -10,11 +10,11 @@ function RouteInfo(props) {
       <div className="topHeader">
         <h2 className = "routeName">ex name</h2>
         <div className="votes">
-        <Icon icon="bx:upvote" className="upvote"/>
-        <Icon icon="bx:downvote" className="downvote" />
+        <Icon icon="bx:upvote" width="35"className="upvote"/>
+        <Icon icon="bx:downvote" width="35" className="downvote" />
       </div>
       </div>
-      <div>
+      <div className="routeInformation">
         <ul>
           <li>Difficulty: Ez</li>
           <li>Length: Ez</li>
