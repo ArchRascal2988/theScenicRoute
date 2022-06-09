@@ -58,8 +58,8 @@ const Map= ()=>{
     
         map.current.on('load', () => {
             map.current.addSource('my-data', {
-                type: 'geojson',
-                data: coordsData
+                "type": 'geojson',
+                "data": coordsData
             })
 
             geocoder.setRenderFunction((item) =>{
