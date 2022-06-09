@@ -2,8 +2,7 @@ import React from "react";
 
 
 import { useRef, useEffect, useState } from 'react';
-import{ QUERY_ROUTES } from '../../utils/queries';
-import{ useQuery } from '@apollo/client';
+
 
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -12,25 +11,12 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhb
 
 
 const Map= ()=>{
-
-    const {loading, data}= useQuery(QUERY_ROUTES);
-    let rData;
-
-    const getGeoData= async ()=>{
-        if(loading){
-            console.log('...')
-        }
-        rData= data;
-        console.log(rData);
-    }   
-
-
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
-    const [geoData, setGeodata]= useState([]);
+
 
     useEffect(() => {
         if (map.current) return;
@@ -39,6 +25,7 @@ const Map= ()=>{
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
             zoom: zoom
+        
         
         })
     
@@ -58,7 +45,6 @@ const Map= ()=>{
         map.current.addControl(geocoder, 'top-left');    
     
         map.current.on('load', () => {
-            getGeoData();
             map.current.addSource('my-data', {
                 "type": "geojson",
                 "data": {
@@ -100,7 +86,7 @@ const Map= ()=>{
                 "minzoom": 12
             });
 
-            map.current.on('click', 'my-data-layer', (e) => {
+            map.on('click', 'my-data-layer', (e) => {
                 const coordinates = e.features[0].geometry.coordinates.slice();
                 //THIS IS WHERE THE POPUP IS BEING RENDERED. WE NEED TO HOOK INTO OUR DATA KEYS 
                 
@@ -126,12 +112,12 @@ const Map= ()=>{
     });
     
     
-
   return (
     <section>
         <div ref={mapContainer} className="map-container" />
     </section>
   )
+    
 }
 
 export default Map;
