@@ -22,7 +22,7 @@ type Route {
   difficultyLevel:Int!
   title:String!
   votes:Int
-  userId:String!
+  userId:ID!
   tags:String
   notes:[Note]
 }

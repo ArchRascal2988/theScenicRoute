@@ -1,20 +1,37 @@
 import React from "react";
 
+import { QUERY_USER } from "../../utils/queries";
+import { UPVOTE, DOWNVOTE } from '../../utils/mutations';
 
-function RouteInfo({description, difficultyLevel, notes, tags, title, userId, votes}) {
+import{ useQuery, useMutation } from '@apollo/client';
+
+
+function RouteInfo({info}) {
+  const {description, title, difficultyLevel, userId, tags, votes}= info;
+  console.log(description);
+
+  const {data, loading}=useQuery(QUERY_USER,{
+    variables:{
+      "userId": userId
+    }});
+
+    let username;
+    if(!loading){
+        console.log(data);
+        username= data.user.username
+    }
+
   return (
     <section>
       <div>
         <h2 className = "routeName">{title}</h2>
         <p>{votes}</p>
-        <button className="btn btn-info" onClick={() => upVote(0)}>👍</button>
-        <button className="btn btn-info" onClick={() => downVote(0)}>👎</button>
       </div>
       <div>
         <p>{description}</p>
         <ul>
           <li>Difficulty: {difficultyLevel}</li>
-          <li>Created By: User (Need to do query using user ID)</li>
+          <li>Created By: {username}</li>
           <li>Tags: {tags}</li>
         </ul>
       </div>
