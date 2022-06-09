@@ -3,9 +3,9 @@ const { Schema, model } = require('mongoose');
 const routeSchema = new Schema(
     {
         geometry:[
-            {
+            [{
                 type: String
-            }
+            }]
         ],
         description:{
             type: String,
