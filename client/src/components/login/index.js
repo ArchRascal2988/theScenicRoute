@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
-
+import "./login.css"
 import { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
@@ -50,7 +50,9 @@ const Login= (props)=>{
       };
 
     return (
-    <div>
+    <div className="logSign-container">
+    <div className="logSign">
+    <div className="logSign-items">
         <h1>Login</h1>
         <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -71,14 +73,17 @@ const Login= (props)=>{
                 Submit
             </Button>
         </Form>
+        <div className="links">
         <a href='/signup'>Dont have an account?</a>
         <a href='/'>Back to home</a>
-
+        </div>
         {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
               </div>
             )}
+            </div>
+    </div>
     </div>
   )
 }
