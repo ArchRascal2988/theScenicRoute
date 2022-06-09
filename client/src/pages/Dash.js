@@ -38,15 +38,12 @@ const Dash = () => {
             <Header />
             <h1>Welcome </h1>
             <Map />
-            {/* <div name='route'>
-                {loading ? (
-                    <div>Loading...</div>
-                ) : (
-                    <RouteList
-                    routes={honeymoonRoutes}
-                  />
-                )} */}
-            {/* </div> */}
+            <ui>
+                <li>Route 1</li>
+                <li>Route 2</li>
+                <li>Route 3</li>
+                <li>Route 4</li>
+            </ui>
             <Footer />
         </main>
     )

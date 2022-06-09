@@ -68,7 +68,7 @@ export const QUERY_SINGLE_ROUTE = gql`
 `
 
 export const QUERY_USER_ROUTES = gql`
-    query getUserRoutes($userId: ID){
+    query userRoutes($userId: ID){
         userRoute(userId: $userId){
             _id
             geometry
