@@ -1,0 +1,36 @@
+.routeName{
+    color: red;
+}
+
+.singleRoute{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+
+.routeInfoBox{
+    margin: 0%;
+    min-width: 35vh;
+    flex-grow: 1;
+    margin: 1%;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    align-items: center;
+}
+
+.routeName{
+    display: inline;
+}
+.votes{
+    display: inline;
+}
+/* map styling for the single route is also here */
+.mapBox{
+    min-width: 70vh;
+    margin:0;
+    flex-grow: 2;
+    margin: 1%;
+  } 
+
