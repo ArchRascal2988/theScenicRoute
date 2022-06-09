@@ -1,7 +1,10 @@
 import React from "react";
+import "./routeInfo.css"
+import { Icon } from '@iconify/react';
 
 import { QUERY_USER } from "../../utils/queries";
 import { UPVOTE, DOWNVOTE } from '../../utils/mutations';
+
 
 import{ useQuery, useMutation } from '@apollo/client';
 import "./routeInfo.css"
@@ -10,8 +13,7 @@ import { Icon } from '@iconify/react';
 
 function RouteInfo({info}) {
   const {description, title, difficultyLevel, userId, tags, votes}= info;
-  console.log(description);
-
+  console.log(userId);
   const {data, loading}=useQuery(QUERY_USER,{
     variables:{
       "userId": userId

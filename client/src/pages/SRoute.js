@@ -9,17 +9,18 @@ import RouteInfo from '../components/routeInfo/index';
 import { useParams } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
-import { QUERY_SINGLE_ROUTE } from '../utils/queries';
+import { QUERY_SINGLE_ROUTE } from "../utils/queries";
 
 const SRoute= () =>{
     const {routeId}= useParams();
+    console.log(routeId);
     let routeData;
     const {loading, data}= useQuery(QUERY_SINGLE_ROUTE,{
         variables:{
             "singleRouteId": routeId
         }})
+
     if(!loading){
-        console.log(data)
         routeData= data.singleRoute;
         console.log(routeData);
     }

@@ -10,20 +10,16 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhb
 
 const Map= (props)=>{
     const def= props.data;
-    console.log(def);
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
     const [geoData, setGeoData]= useState(def);
-    console.log(geoData);
 
 
 
     useEffect(() => {
-        console.log(geoData);
-        console.log(def);
         if (map.current) return;
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
@@ -48,9 +44,7 @@ const Map= (props)=>{
        
         
         map.current.on('load', () => {
-            console.log(def);
             map.current.addSource('my-data', {
-
                 'type': 'geojson',
                 'data': def
             })  
@@ -73,7 +67,7 @@ const Map= (props)=>{
                     'line-width': 3.5,
                     'line-color': '#4C4C9D'
                 },
-                "minzoom": 5
+                "minzoom": 7
             });
 
             map.current.on('click', 'my-data-layer', (e) => {
@@ -86,7 +80,7 @@ const Map= (props)=>{
                 .setHTML(`<h2>{route.title}</h2>
                           <h2>{route.difficulty}</h2>
                           <h2>{route.votes}</h2>  
-                          <h3><a href="/route/62a151fe6c6e2e707ebc78f8">see more</a></h3>`) 
+                          <h3><a href="/route/62a26587be4ee9e47c3edf5e">see more</a></h3>`) 
                 .addTo(map.current);
                 });
 
