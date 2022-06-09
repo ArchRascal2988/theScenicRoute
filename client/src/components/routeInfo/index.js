@@ -1,25 +1,22 @@
 import React from "react";
 
 
-function RouteInfo(props) {
-  console.log(props.data);
-  
+function RouteInfo({description, difficultyLevel, notes, tags, title, userId, votes}) {
   return (
     <section>
       <div>
-        <h2 className = "routeName">ex name</h2>
+        <h2 className = "routeName">{title}</h2>
+        <p>{votes}</p>
         <p>upArr</p>
         <p>downArr</p>
       </div>
       <div>
+        <p>{description}</p>
         <ul>
-          <li>Difficulty: Ez</li>
-          <li>Length: Ez</li>
-          <li>Created By: Ez</li>
-          <li>Created On: Ez</li>
-          <li>Tags: Ez</li>
+          <li>Difficulty: {difficultyLevel}</li>
+          <li>Created By: User (Need to do query using user ID)</li>
+          <li>Tags: {tags}</li>
         </ul>
-        <h5>Reviews</h5>
       </div>
     </section>
  )};

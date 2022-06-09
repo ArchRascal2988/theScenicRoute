@@ -20,7 +20,7 @@ const SRoute= () =>{
             "singleRouteId": routeId
         }})
     if(!loading){
-        routeData= data;
+        routeData= data.singleRoute;
     }
 
 
