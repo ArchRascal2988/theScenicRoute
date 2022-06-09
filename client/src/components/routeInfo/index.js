@@ -1,8 +1,7 @@
 import React from "react";
 
 
-function RouteInfo() {
-
+function RouteInfo(props) {
 
   
   return (

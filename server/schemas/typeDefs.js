@@ -23,7 +23,7 @@ type Route {
   title:String!
   votes:Int
   userId:String!
-  tags:[String]
+  tags:String
   notes:[Note]
 }
 

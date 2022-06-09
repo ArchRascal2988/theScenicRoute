@@ -6,14 +6,17 @@ import Map from '../components/map/index';
 import RouteList from '../components/routeList/index';
 import { QUERY_ME, QUERY_ROUTES, QUERY_USER } from "../utils/queries";
 
+
 const Dash = () => {
     const { loading, data } = useQuery(QUERY_ROUTES);
     const honeymoonRoutes = data?.routes || ['error']
     console.log(honeymoonRoutes);
 
+    const { me } = useQuery(QUERY_ME)
+
     return (
         <main>
-            <h1>Hello World</h1>
+            
             <Header />
             <Map />
                 
@@ -26,10 +29,7 @@ const Dash = () => {
                   />
                 )}
             </div>
-
-
-
-            <Footer type='dash'/>
+            <Footer />
         </main>
     )
 

@@ -1,13 +1,12 @@
 import React from "react";
 
 import { useRef, useEffect, useState } from 'react';
-import { useMutation } from '@apollo/client';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 import { ADD_ROUTE } from "../../utils/mutations"
-
+import { useMutation } from '@apollo/client';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
@@ -35,27 +34,19 @@ const CreateMap= (props)=>{
     const handleSubmit = async (e) => {
         e.preventDefault();
         const rawData = {
-        'userId': "62a0de824611b77c9f324997",
+        "userId": "62a0de824611b77c9f324997",
         // geometry: geoData.features[0].geometry.coordinates,
-        'geometry':[["111","222"],
-    [123,123]],
-        'description': description,
-        'title': title,
-        'difficultyLevel': 1,
-        "tags": tags,
+        "geometry":[[111.12341,222.1234],
+    [123.234,123.44]],
+        "description": "description",
+        "title": "god",
+        "difficultyLevel": 1,
+        "tags": "help",
         }
         console.log(rawData)
         try{
         const {data} = await addRoute({
-            variables:{
-            userId: "62a0de824611b77c9f324997",
-            // geometry: geoData.features[0].geometry.coordinates,
-            geometry:[[111,222],
-        [123,123]],
-            description: description,
-            title: title,
-            difficultyLevel: 1,
-            tags: tags,
+            variables:{...rawData
             }
         });
         console.log(data)
