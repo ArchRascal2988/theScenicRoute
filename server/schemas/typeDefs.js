@@ -77,7 +77,7 @@ type Mutation {
       ): Route
     removeRoute(
       routeId: String!
-      ): Route
+      ): User
     removeNote(
       noteId: String!
       ): Note  

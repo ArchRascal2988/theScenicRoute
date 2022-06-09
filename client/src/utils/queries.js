@@ -49,7 +49,7 @@ export const QUERY_ROUTES = gql`
         title
         votes
         userId
-  }
+    }
   }
 `;
 
