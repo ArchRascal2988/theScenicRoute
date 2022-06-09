@@ -54,17 +54,22 @@ export const QUERY_ROUTES = gql`
 `;
 
 export const QUERY_SINGLE_ROUTE = gql`
-    query getSingleRoutes($routeId: ID){
-        route(routeId: $routeId){
-            _id
-            geometry
-            description
-            difficultyLevel
-            title
-            votes
-            userId
-        }
+query Query($singleRouteId: ID!) {
+  singleRoute(id: $singleRouteId) {
+    _id
+    geometry
+    description
+    difficultyLevel
+    title
+    userId
+    votes
+    tags
+    notes {
+      image
+      content
     }
+  }
+}
 `
 
 export const QUERY_USER_ROUTES = gql`

@@ -16,7 +16,7 @@ type Auth {
 }
 
 type Route {
-  _id: ID
+  _id: ID!
   geometry:[[Float]]!
   description:String
   difficultyLevel:Int!
@@ -38,10 +38,10 @@ type Note {
 
 
 type Query {
-    user(username: String!):User
+    user(id: ID!): User
     me: User
     routes:[Route]
-    singleRoute(singleRoute: ID!): Route
+    singleRoute(id: ID!): Route
     userRoutes(user: ID!): User
 }
 

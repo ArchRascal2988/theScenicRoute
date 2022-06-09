@@ -4,8 +4,8 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        user: async (parent, { userId }) => {
-            return await User.findById({ _id: userId }).populate('routes')
+        user: async (parent, args) => {
+            return await User.findById(args.id).populate('routes')
         },
         me: async (parent, args, context)=>{
             if(context.user){
@@ -17,8 +17,8 @@ const resolvers = {
         routes: async () => {
             return await Route.find().populate('notes')
         },
-        singleRoute: async (parent, { routeId }) => {
-            return await Route.findOne({ _id: routeId }).populate('notes')
+        singleRoute: async (parent, args) => {
+            return await Route.findById(args.id).populate('notes')
         },
         //find all user routes by userId
         userRoutes: async (parent, { userId }) => {
