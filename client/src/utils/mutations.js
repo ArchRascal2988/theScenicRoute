@@ -24,7 +24,7 @@ export const ADD_USER = gql`
 
 export const ADD_ROUTE = gql`
   mutation addRoute(
-      $userId: String!
+      $userId: String
       $geometry: [String]!
       $description: String!
       $title: String
@@ -32,12 +32,12 @@ export const ADD_ROUTE = gql`
       $tags: [String]
   ){
     addRoute(
-      userId: $String!
-      geometry: $[String]!
-      description: $String!
+      userId: $String
+      geometry: $String
+      description: $String
       title: $String
-      difficultyLevel: $Int!
-      tags: $[String]
+      difficultyLevel: $Int
+      tags: $String
     ){
       routes{
             _id
@@ -62,10 +62,10 @@ mutation addNote(
       $routeId: String!
       ){
         addNote(
-      routePoints: $[Int]
+      routePoints: $Int
       image: $String
-      content: $String!
-      routeId: $String!
+      content: $String
+      routeId: $String
         ){
             notes{
               _id
@@ -80,7 +80,7 @@ mutation addNote(
 
 export const UPVOTE =  gql`
 mutation upVote($routeId: String!){
-  upVote(routeId: $String!){
+  upVote(routeId: $String){
     votes
   }
 }
@@ -88,7 +88,7 @@ mutation upVote($routeId: String!){
 
 export const DOWNVOTE =  gql`
 mutation downVote($routeId: String!){
-  upVote(routeId: $String!){
+  upVote(routeId: $String){
     votes
   }
 }
@@ -96,10 +96,10 @@ mutation downVote($routeId: String!){
 
 export const REMOVE_NOTE = gql`
 mutation removeNote(
-  $noteId: String!
+  $noteId: String
       ){
         removeNote(
-          noteId: $String!
+          noteId: $String
         ){
             notes{
               _id
@@ -112,23 +112,15 @@ mutation removeNote(
         }
 `;
 
-export const REMOVE_ROUTE = gql`
-mutation removeRoute(
-  $routeId: String!
-      ){
-        removeRoute(
-          routeId: $String!
-        ){
-          routes{
-            _id
-            geometry
-            description
-            difficultyLevel
-            title
-            votes
-            userId
-            tags
-            notes
-          }
-        }
-`;
+// export const REMOVE_ROUTE = gql`
+// mutation removeRoute(
+//   $routeId: String!
+//       ){
+//         removeRoute(
+//           routeId: $String
+//         ){
+//           routes{
+//             _id
+//           }
+//         }
+// `;
