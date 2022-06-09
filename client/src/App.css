@@ -14,8 +14,9 @@
 
 .suggestions {
   list-style: none;
-  background-color: var(--dBlue);
+  background-color:#585ae4;
   border-radius: 1.6px;
+
 }
 
 .geocoder-dropdown-item {
@@ -23,6 +24,7 @@ padding: 5px;
 }
 .geocoder-dropdown-icon {
 margin-right: 10px;
+/* background-color:red; */
 }
 .geocoder-dropdown-text {
 color: var(--white);
@@ -46,8 +48,8 @@ border-radius: 1.6px;
   color:rgb(255, 157, 0);
   text-align: center;
 position: fixed;
- margin-top: 5px;
- border:solid red;
+ margin-top: 50px;
+ /* border:solid red; */
  display: flex;
  bottom: 0;
  width: 100%;
@@ -59,7 +61,7 @@ position: fixed;
   background-color:#6B985D;
   margin: auto;
   margin-bottom: 50px;
-  border:solid red
+  /* border:solid red */
 }
 
 /* .logo{
@@ -74,14 +76,38 @@ footBtn{
 
 body{
   /* background-color: #FFD041; */
-  border:solid rgb(251, 0, 255);
-  margin: 0 auto;
-  padding: 0;
+  /* border:solid rgb(251, 0, 255); */
+  margin: 50 auto;
+  padding: 20px;
   height: fit-content;
   min-height: 50vh;
   height: 5px;
 }
 #root{
   border: solid rgb(27, 40, 8);
-  background-color: #ff41d0;
+  background-color:#FFD041
 }
+
+
+.btn-primary {
+  background-color:#6B985D;
+  }
+
+
+a{
+  background-color:#6B985D;
+  color:rgb(240, 247, 244);
+  margin: 5px 5px 5px 5px;
+  height: 2rem
+
+
+}
+
+
+
+/* ul.suggestions {
+  list-style: none;
+  background-color:#75edf5;
+  border-radius: 1.6px;
+
+} */
