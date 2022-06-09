@@ -27,11 +27,11 @@ const SRoute= () =>{
     return(
         <main>
             <Header />
-            
+            <div className="singleRoute">
             <Map />
             
             <RouteInfo data={routeData} />
-    
+            </div>
             <Footer />
         </main>
     )

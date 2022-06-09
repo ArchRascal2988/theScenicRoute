@@ -19,35 +19,6 @@
 
 }
 
-.geocoder-dropdown-item {
-padding: 5px;
-}
-.geocoder-dropdown-icon {
-margin-right: 10px;
-
-}
-.geocoder-dropdown-text {
-color: var(--white);
-background-color: var(--Dblue);
-font-family: Arial, Helvetica, sans-serif;
-font-size: 10px;
-border-radius: 1.6px;
-}
-
-.mapbox-ctrl-geocoder--powered-by{
-  display: none;
-}
-
-.mapbox-ctrl-geocoder--pin-right{
-  display: none;
-}
-
-.map-container {
-  height: 400px;
-  }
-
-
-
 #root{
   border: solid rgb(27, 40, 8);
   background-color:#FFD041;
@@ -82,19 +53,7 @@ section{
   border-radius: 1.6px;
 
 } */
-   
-.sidebar {
-  background-color: rgba(35, 55, 75, 0.9);
-  color: #fff;
-  padding: 6px 12px;
-  font-family: monospace;
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 12px;
-  border-radius: 4px;
-  }
+
 
 
 

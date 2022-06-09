@@ -1,18 +1,20 @@
 import React from "react";
-
-
+import "./routeInfo.css"
+import { Icon } from '@iconify/react';
 
 function RouteInfo(props) {
   console.log(props.data);
   
   return (
-    <section>
-      <div>
+    <section className="routeInfoBox">
+      <div className="topHeader">
         <h2 className = "routeName">ex name</h2>
-        <p>upArr</p>
-        <p>downArr</p>
+        <div className="votes">
+        <Icon icon="bx:upvote" width="35"className="upvote"/>
+        <Icon icon="bx:downvote" width="35" className="downvote" />
       </div>
-      <div>
+      </div>
+      <div className="routeInformation">
         <ul>
           <li>Difficulty: Ez</li>
           <li>Length: Ez</li>
