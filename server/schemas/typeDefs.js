@@ -57,11 +57,11 @@ type Mutation {
         ): Auth
     addRoute(
       userId: String!
-      geometry: [String]!
+      geometry: [[String]]!
       description: String!
       title: String
       difficultyLevel: Int!
-      tags: [String]
+      tags: String
       ): User
     addNote(
       routePoints: [Int]
