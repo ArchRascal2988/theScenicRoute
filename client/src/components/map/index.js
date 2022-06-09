@@ -1,12 +1,10 @@
 import React from "react";
 
-
-import { useRef, useEffect, useState } from 'react';
-
 import { useQuery } from '@apollo/client';
 import { QUERY_ROUTES } from '../../utils/queries';
-
 import GeoJSON from 'geojson';
+
+import { useRef, useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -14,21 +12,19 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
 
-const Map= ()=>{
-    const {loading, data}= useQuery(QUERY_ROUTES);
-    const allRoutesData =  data?.routes || ['error'];
-    let coordsData;
-    if(!loading){
-        console.log(allRoutesData);
-        coordsData= GeoJSON.parse(allRoutesData, {'LineString': 'geometry'});
-    }
-    
-    console.log(coordsData);
+const Map= (props)=>{
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
+    
+    const {loading, data}= useQuery(QUERY_ROUTES);
+    const allRoutesData =  data?.routes || ['error'];
+    let coordsData;
+    if(!loading){
+        coordsData= GeoJSON.parse(allRoutesData, {'LineString': 'geometry'});
+    }
 
 
     useEffect(() => {
@@ -38,8 +34,6 @@ const Map= ()=>{
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
             zoom: zoom
-        
-        
         })
     
         const geocoder= new MapboxGeocoder({
@@ -54,13 +48,14 @@ const Map= ()=>{
         });
       
         map.current.addControl(new mapboxgl.GeolocateControl({trackUserLocation: false}),'top-right');
-        map.current.addControl(geocoder, 'top-left');    
-    
+        map.current.addControl(geocoder, 'top-left');  
+       
+        
         map.current.on('load', () => {
             map.current.addSource('my-data', {
                 type: 'geojson',
                 data: coordsData
-            })
+            })  
 
             geocoder.setRenderFunction((item) =>{
                 const maki = item.properties.maki || 'marker';
@@ -103,9 +98,7 @@ const Map= ()=>{
                 .addTo(map.current);
                 });
         });
-
-        
-
+       
     });
     
     
