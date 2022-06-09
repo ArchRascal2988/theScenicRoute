@@ -28,14 +28,15 @@ const SRoute= () =>{
     return(
         <main>
             <Header />
-            
+            <div className="singleRoute">
             <Map />
 
             {!loading ? <RouteInfo info={routeData} />
             :<RouteInfo info='' />
             }
             
-    
+            </div>
+
             <Footer />
         </main>
     )

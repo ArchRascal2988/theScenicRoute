@@ -104,7 +104,7 @@ const Map= (props)=>{
     
     
   return (
-    <section>
+    <section className="mapBox">
         <div ref={mapContainer} className="map-container" />
     </section>
   )
