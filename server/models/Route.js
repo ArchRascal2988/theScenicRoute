@@ -2,10 +2,11 @@ const { Schema, model } = require('mongoose');
 
 const routeSchema = new Schema(
     {
+
         geometry:[
-            {
-                type: String
-            }
+            [{
+                type: Number
+            }]
         ],
         description:{
             type: String,
@@ -28,11 +29,11 @@ const routeSchema = new Schema(
             type: String,
             required: true
         },
-        tags:[
+        tags:
             {
                 type: String,
             }
-        ],
+        ,
         notes:[
             {
                 type: Schema.Types.ObjectId,
