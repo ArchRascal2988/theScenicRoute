@@ -1,6 +1,10 @@
 import React from "react";
+<<<<<<< HEAD
 import { useRouteContext } from "../../utils/RouteProvider";
 
+=======
+import "./createRoute.css"
+>>>>>>> 6c39042fb739db9a94cbbcb3618c1dd4f7060d1c
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
@@ -89,11 +93,62 @@ const finiHandler= (e) =>{
 };
 
   return (
-    <div>
-        <div ref={mapContainer} className="map-container createMap" />
-        <button type="button" onClick={finiHandler}>All finished?</button>
-    </div>
-    
+    <div className="blah">
+      <div><h1>Create A Map</h1></div>
+        {/* <section className="controls"> <p>Controls: Bar on top right to change edit mode. Click to add a point, double click to finalize a route, and click the button when all finished.</p></section> */}
+        <section ref={mapContainer} className="map-container createMap" />
+        <button className="routeButton"onClick={finiHandler}>All finished?</button>
+        <div className="formStuff">
+            <form className="route-form" onSubmit={handleSubmit}>
+            <input
+                type="text"
+                placeholder="Title of Route"
+                value={title}
+                name="text"
+                className="route-title"
+                onChange={(event) => setTitle(event.target.value)}
+            ></input>
+                <div className="dropdown">
+                    <button className={`dropbtn ${difficulty}`}></button>
+                    <div className="dropdown-content">
+                        <p onClick={() => setDiff(difficultyLevel[0])}>Easy</p>
+                        <p onClick={() => setDiff(difficultyLevel[1])}>Moderate</p>
+                        <p onClick={() => setDiff(difficultyLevel[2])}>Hard</p>
+                        <p onClick={() => setDiff(difficultyLevel[3])}>Madman</p>
+                    </div>
+                </div>
+                <input
+                    type="text"
+                    placeholder="Insert Description of Route"
+                    value={description}
+                    name="text"
+                    className="route-description"
+                    onChange={(event) => setDescription(event.target.value)}
+                ></input>
+                <input
+                    type="text"
+                    placeholder="insert tags separated by a ,"
+                    value={tags}
+                    name="text"
+                    className="route-tags"
+                    onChange={(event) => setTags(event.target.value)}
+                ></input>
+                  {/* Set this notes part of the form to an event listener: double click to display this part of the form */}
+                    {/* <div className="dropdown">
+                    <button className={`dropbtn ${points}`}></button>
+                    <div className="dropdown-content">
+                        <p onClick={() => setDiff(difficultyLevel[0])}>Easy</p>
+                        <p onClick={() => setDiff(difficultyLevel[1])}>Moderate</p>
+                        <p onClick={() => setDiff(difficultyLevel[2])}>Hard</p>
+                        <p onClick={() => setDiff(difficultyLevel[3])}>Madman</p>
+                    </div>
+                    </div> */}
+                     <div className="col-2 text-left">
+                </div>
+                <button className="bucket-button">Create Route</button>
+            </form>
+            </div>
+            </div>
   )
     
 }
