@@ -6,7 +6,9 @@
   --green: #6B985D;
   --white: rgba(225, 233, 241, 0.943);
 }
-
+body{
+  background-color: var(--yellow);
+}
 .logo{
   width: 75px;
   height: 75px;
@@ -17,12 +19,6 @@
   background-color:#585ae4;
   border-radius: 1.6px;
 
-}
-
-#root{
-  border: solid rgb(27, 40, 8);
-  background-color:#FFD041;
-  height: 100vh;
 }
 
 
