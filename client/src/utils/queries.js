@@ -20,11 +20,13 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_USER = gql`
-query user(id: $userId) {
+query Query($userId: ID!) {
+  user(id: $userId) {
     username
     email
     password
   }
+}
 `;
 
 //this is for the homepage map...

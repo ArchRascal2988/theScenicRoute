@@ -1,8 +1,5 @@
 import React from "react";
 import { useRouteContext } from "../../utils/RouteProvider";
-
-import "./createRoute.css"
-
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
@@ -18,7 +15,15 @@ const CreateMap= ()=>{
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
     const [geoData, setGData]= useState({});
+
     
+    const [difficulty, setDiff] = useState("");
+    const difficultyLevel = ["easy", "moderate", "hard", "madman"]
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [tags, setTags] = useState("");
+    // const [notes, setNotes] = useState("");
+     
 
     const {addGeometry, currentRoute} = useRouteContext();
     const[coords, setCoords] = useState([[],[]]);
@@ -80,6 +85,28 @@ const CreateMap= ()=>{
 
     });
 
+const handleSubmit = async (e) => {
+        e.preventDefault();
+        const rawData = {
+        "userId": "62a0de824611b77c9f324997",
+        // geometry: geoData.features[0].geometry.coordinates,
+        "geometry":[[111.12341,222.1234],
+    [123.234,123.44]],
+        "description": "description",
+        "title": "god",
+        "difficultyLevel": 1,
+        "tags": "help",
+        }
+        console.log(rawData)
+        try{
+        setTitle('');
+        setDiff('');
+        setDescription('');
+        setTags('');
+    }catch(err){
+        console.error(err)
+    }
+}
 
 const finiHandler= (e) =>{
   e.preventDefault();
@@ -91,14 +118,10 @@ const finiHandler= (e) =>{
 };
     
   return (
-    <div className="blah">
-      <div><h1>Create A Map</h1></div>
-        {/* <section className="controls"> <p>Controls: Bar on top right to change edit mode. Click to add a point, double click to finalize a route, and click the button when all finished.</p></section> */}
-        <section ref={mapContainer} className="map-container createMap" />
-        <button className="routeButton"onClick={finiHandler}>All finished?</button>
-        <div className="formStuff">
-            <form className="route-form" onSubmit={handleSubmit}>
-            <input
+    <div>
+        <div ref={mapContainer} className="map-container createMap" />
+        <button onClick={finiHandler}>All finished?</button>
+        <input
                 type="text"
                 placeholder="Title of Route"
                 value={title}
@@ -106,6 +129,7 @@ const finiHandler= (e) =>{
                 className="route-title"
                 onChange={(event) => setTitle(event.target.value)}
             ></input>
+            <form className="route-form" onSubmit={handleSubmit}>
                 <div className="dropdown">
                     <button className={`dropbtn ${difficulty}`}></button>
                     <div className="dropdown-content">
@@ -145,8 +169,9 @@ const finiHandler= (e) =>{
                 </div>
                 <button className="bucket-button">Create Route</button>
             </form>
-            </div>
-            </div>
+
+        </div>
+
   )
     
 }
