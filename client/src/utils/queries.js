@@ -50,10 +50,11 @@ query Query($singleRouteId: ID!) {
     description
     difficultyLevel
     title
-    userId
     votes
+    userId
     tags
     notes {
+      routePoints
       image
       content
     }
