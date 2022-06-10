@@ -1,4 +1,6 @@
 import React from "react";
+import "./routeInfo.css"
+import { Icon } from '@iconify/react';
 
 import { QUERY_USER } from "../../utils/queries";
 import { UPVOTE, DOWNVOTE } from '../../utils/mutations';
@@ -20,8 +22,6 @@ function RouteInfo({info}) {
         console.log(data);
         username= data.user.username
     }
-import "./routeInfo.css"
-import { Icon } from '@iconify/react';
 
   return (
     <section className="routeInfoBox">
