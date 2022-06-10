@@ -8,8 +8,8 @@
 }
 
 .logo{
-  width: 75px;
-  height: 75px;
+  width: 90x;
+  height: 90px;
 }
 
 .suggestions {
@@ -46,7 +46,18 @@ section{
   border-radius: 1.6px;
 
 } */
-
+main{
+  display: flex;
+  flex-direction: column;
+}
+header.header{
+  width: 100%;
+  margin: 0%;
+}
+footer.footer{
+  padding: 0%;
+  position: relative;
+}
 
 
 
