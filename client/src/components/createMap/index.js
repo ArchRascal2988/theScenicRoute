@@ -19,8 +19,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhb
 const CreateMap= ()=>{
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-70.9);
-    const [lat, setLat] = useState(42.35);
+    const [lng, setLng] = useState(-81.42051971574105);
+    const [lat, setLat] = useState(28.50968414217563);
     const [zoom, setZoom] = useState(9);
     const [geoData, setGData]= useState({});
     const [addRoute, { error, data }] = useMutation(ADD_ROUTE);
