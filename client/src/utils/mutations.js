@@ -28,33 +28,18 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_ROUTE = gql`
-  mutation addRoute(
-      $userId: String!,
-      $geometry: [[Float]],
-      $description: String!,
-      $title: String,
-      $difficultyLevel: Int!,
-      $tags: String
-  ){
-    addRoute(
-      userId: $String,
-      geometry: $Float,
-      description: $String,
-      title: $String,
-      difficultyLevel: $Int,
-      tags: $String
-    ) {
-
-      routes{
-            geometry
-            description
-            difficultyLevel
-            title
-            userId
-            tags
-    }
-    }
+mutation Mutation($userId: String!, $geometry: [[Float]]!, $description: String!, $title: String!, $difficultyLevel: Int!, $tags: String) {
+  addRoute(userId: $userId, geometry: $geometry, description: $description, title: $title, difficultyLevel: $difficultyLevel, tags: $tags) {
+    _id
+    geometry
+    difficultyLevel
+    description
+    title
+    votes
+    userId
+    tags
   }
+}
 `;
 
 export const ADD_NOTE = gql`
