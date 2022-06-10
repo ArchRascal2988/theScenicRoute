@@ -7,6 +7,8 @@ import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
+import "./createRoute.css"
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
 
@@ -120,10 +122,13 @@ const finiHandler= (e) =>{
 };
     
   return (
-    <div>
+    <div className="blah">
+        <div><h1>Create A Map</h1></div>
         <div ref={mapContainer} className="map-container createMap" />
         <button onClick={finiHandler}>All finished?</button>
-        <input
+        <div className="formStuff">
+            <form className="route-form" onSubmit={handleSubmit}>
+            <input
                 type="text"
                 placeholder="Title of Route"
                 value={title}
@@ -131,7 +136,6 @@ const finiHandler= (e) =>{
                 className="route-title"
                 onChange={(event) => setTitle(event.target.value)}
             ></input>
-            <form className="route-form" onSubmit={handleSubmit}>
                 <div className="dropdown">
                     <button className={`dropbtn ${difficulty}`}></button>
                     <div className="dropdown-content">
@@ -172,6 +176,7 @@ const finiHandler= (e) =>{
                 <button className="bucket-button">Create Route</button>
             </form>
 
+            </div>
 
         </div>
 
