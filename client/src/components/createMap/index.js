@@ -1,5 +1,7 @@
 import React from "react";
+
 import { useRouteContext } from "../../utils/RouteProvider";
+
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
@@ -122,9 +124,10 @@ const finiHandler= (e) =>{
   return (
     <div className="blah">
         <div><h1>Create A Map</h1></div>
-        <div ref={mapContainer} className="map-container createMap" />
-        <button onClick={finiHandler}>All finished?</button>
+        <section ref={mapContainer} className="map-container createMap" />
+        <button className="routeButton" onClick={finiHandler}><h3>All finished?</h3></button>
         <div className="formStuff">
+        <div className="routeDescription"><h3>Describe your Route:</h3></div>
             <form className="route-form" onSubmit={handleSubmit}>
             <input
                 type="text"
@@ -135,12 +138,11 @@ const finiHandler= (e) =>{
                 onChange={(event) => setTitle(event.target.value)}
             ></input>
                 <div className="dropdown">
-                    <button className={`dropbtn ${difficulty}`}></button>
                     <div className="dropdown-content">
-                        <p onClick={() => setDiff(difficultyLevel[0])}>Easy</p>
-                        <p onClick={() => setDiff(difficultyLevel[1])}>Moderate</p>
-                        <p onClick={() => setDiff(difficultyLevel[2])}>Hard</p>
-                        <p onClick={() => setDiff(difficultyLevel[3])}>Madman</p>
+                        <button onClick={() => setDiff(difficultyLevel[0])}>Easy</button>
+                        <button onClick={() => setDiff(difficultyLevel[1])}>Moderate</button>
+                        <button onClick={() => setDiff(difficultyLevel[2])}>Hard</button>
+                        <button onClick={() => setDiff(difficultyLevel[3])}>Madman</button>
                     </div>
                 </div>
                 <input
@@ -173,7 +175,9 @@ const finiHandler= (e) =>{
                 </div>
                 <button className="bucket-button">Create Route</button>
             </form>
+
             </div>
+
         </div>
 
   )

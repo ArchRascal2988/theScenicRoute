@@ -5,6 +5,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding:0%;
   font-family: 'Roboto Condensed', sans-serif;
+  background-color:#FFD041;
 }
 
 main{
