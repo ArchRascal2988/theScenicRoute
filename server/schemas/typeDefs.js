@@ -59,10 +59,10 @@ type Mutation {
       userId: String!
       geometry: [[Float]]!
       description: String!
-      title: String
+      title: String!
       difficultyLevel: Int!
       tags: String
-      ): User
+      ): Route
     addNote(
       routePoints: [Int]
       image: String
