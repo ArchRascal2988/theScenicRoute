@@ -16,13 +16,22 @@ const Home = () =>{
     if(!loading){
         rawData= GeoJSON.parse(allRoutesData, {'LineString': 'geometry'})
     }
+    if(loading){
+        return (
+            <div>
+                <h1>Loading....</h1>
+            </div>
+        )
+    }
 
+    console.log(rawData)
     return(
         <main>
             <Header />
 
-            <Map data={rawData} />
-
+        {loading ? <Map data={''}/>
+        : <Map data={rawData} />}
+            
             <Footer />
         </main>
     )
