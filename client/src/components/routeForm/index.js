@@ -38,6 +38,10 @@ function RouteForm(props) {
     }
 
 
+    const clear= ()=>{
+        window.location.assign('/me')
+    }
+
     return (
         <div>
             <input
@@ -85,7 +89,7 @@ function RouteForm(props) {
                         <p onClick={() => setDiff(difficultyLevel[3])}>Madman</p>
                     </div>
                     </div> */}
-                <button className="bucket-button">Create Route</button>
+                <button onClick={clear}className="bucket-button">Create Route</button>
             </form>
         </div>
     );

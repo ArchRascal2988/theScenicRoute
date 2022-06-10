@@ -10,16 +10,19 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhb
 
 const Map= (props)=>{
     const def= props.data;
+    console.log(def);
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(28.5384);
-    const [lat, setLat] = useState(81.3789);
-    const [zoom, setZoom] = useState(9);
-    const [geoData, setGeoData]= useState(def);
+    const [lng, setLng] = useState(-81.42051971574105);
+    const [lat, setLat] = useState(28.50968414217563);
+    const [zoom, setZoom] = useState(6);
+    const [geoData, setGeoData]= useState({});
 
 
 
     useEffect(() => {
+        setGeoData(def);
+        console.log(def, geoData);
         if (map.current) return;
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
@@ -44,6 +47,7 @@ const Map= (props)=>{
        
         
         map.current.on('load', () => {
+            console.log(def, geoData);
             map.current.addSource('my-data', {
                 'type': 'geojson',
                 'data': def
@@ -52,7 +56,6 @@ const Map= (props)=>{
             geocoder.setRenderFunction((item) =>{
                 const maki = item.properties.maki || 'marker';
                 return `<div class='geocoder-dropdown-item'>
-                <img class='geocoder-dropdown-icon' src='https://unpkg.com/@mapbox/maki@6.1.0/icons/${maki}-15.svg'>
                 <span class='geocoder-dropdown-text'>
                 ${item.text}
                 </span>
@@ -64,10 +67,10 @@ const Map= (props)=>{
                 'type': 'line',
                 'source': 'my-data',
                 'paint': {
-                    'line-width': 3.5,
+                    'line-width': 3,
                     'line-color': '#4C4C9D'
                 },
-                "minzoom": 7
+                "minzoom": 6
             });
 
             map.current.on('click', 'my-data-layer', (e) => {
@@ -77,9 +80,8 @@ const Map= (props)=>{
                  
                 new mapboxgl.Popup()
                 .setLngLat(coordinates[0])
-                .setHTML(`<h2>{route.title}</h2>
-                          <h2>{route.difficulty}</h2>
-                          <h2>{route.votes}</h2>  
+                .setHTML(`<h2>${e.features[0].title}</h2>
+                          <h2>${e.features[0].title}</h2>
                           <h3><a href="/route/62a282aa4f7afa820c4eca4d">see more</a></h3>`) 
                 .addTo(map.current);
                 });
