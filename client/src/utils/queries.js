@@ -20,7 +20,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_USER = gql`
-query user(id: $userId) {
+query ($userId: ID!) {
+  user(id: $userId) {
     username
     email
     password

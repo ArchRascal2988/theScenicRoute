@@ -2,7 +2,6 @@ import React from 'react';
 import { useMutation } from '@apollo/client';
 import { UPVOTE, DOWNVOTE } from '../../utils/mutations';
 import { Link } from 'react-router-dom';
-import { IconifyAPIMergeQueryParams } from '@iconify/react';
 
 const RouteItem = ({ userRoutes }) => {
 
@@ -32,7 +31,7 @@ const RouteItem = ({ userRoutes }) => {
   return (
     // will route to single route page
     <Link className="btn" to={`/route/${route.id}`}>
-      <h2>{title}</h2>
+      <h2>{userRoutes.title}</h2>
       <button className="btn btn-info" onClick={() => upVote(0)}>👍</button>
       <button className="btn btn-info" onClick={() => downVote(0)}>👎</button>
       </Link>
