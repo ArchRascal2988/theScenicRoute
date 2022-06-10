@@ -30,11 +30,13 @@ const RouteItem = ({ userRoutes }) => {
 
   return (
     // will route to single route page
+  <li>
     <Link className="btn" to={`/route/${route.id}`}>
       <h2>{userRoutes.title}</h2>
       <button className="btn btn-info" onClick={() => upVote(0)}>👍</button>
       <button className="btn btn-info" onClick={() => downVote(0)}>👎</button>
       </Link>
+  </li>
   )
 };
 

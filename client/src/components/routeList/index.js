@@ -28,17 +28,20 @@ const RouteList = () => {
 
   // Create a list of rendered IssueItems by using the map method on `routes`
   const renderedList = honeymoonRoutes.map((route) => {
-    return <ui>
-          <li><RouteItem key={route.id} route={route.title} /></li>
-          </ui> 
+    return (
+          <RouteItem key={route.id} route={route.title} />
+          )
   });
 
   // Return our array of RouteItems wrapped inside a parent div
   return (
       <section className='userRoutes'>
-        <ui>
-        <div className="ui relaxed divided list">{renderedList}</div>
-        </ui>
+      
+        <div className="ui relaxed divided list">
+          <ul>
+          {renderedList}
+          </ul>
+        </div>
         <a href='/create' className='createBtn'>Create a new route +</a>
       </section>
   )

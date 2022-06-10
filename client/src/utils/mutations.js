@@ -32,12 +32,12 @@ mutation Mutation($userId: String!, $geometry: [[Float]]!, $description: String!
   addRoute(userId: $userId, geometry: $geometry, description: $description, title: $title, difficultyLevel: $difficultyLevel, tags: $tags) {
     _id
     geometry
-    difficultyLevel
-    description
     title
     votes
     userId
     tags
+    description
+    difficultyLevel
   }
 }
 `;

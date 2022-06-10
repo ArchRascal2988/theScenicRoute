@@ -37,6 +37,9 @@ const CreateMap= ()=>{
     const {addGeometry, currentRoute} = useRouteContext();
     const[coords, setCoords] = useState([[],[]]);
     const userData= Auth.getUser();
+    const userId= userData.data._id;
+    console.log(userId);
+
 
     useEffect(() => {
         if (map.current) return;
@@ -96,14 +99,15 @@ const CreateMap= ()=>{
 
 const handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log(coords, title, description, tags, difficulty)
         try {
             const { data } = await addRoute({
               variables:{
+                userId: userId,
                 geometry: coords,
-                userId: userData.user.id,
-                title: title,
                 description: description,
+                difficultyLevel: difficulty,
+                title: title,
                 tags: tags
               }
             });
@@ -123,7 +127,7 @@ const finiHandler= (e) =>{
     
   return (
     <div className="blah">
-        <div><h1>Create A Map</h1></div>
+        <div><h1>Create A Route</h1></div>
         <section ref={mapContainer} className="map-container createMap" />
         <button className="routeButton" onClick={finiHandler}><h3>All finished?</h3></button>
         <div className="formStuff">
@@ -139,10 +143,10 @@ const finiHandler= (e) =>{
             ></input>
                 <div className="dropdown">
                     <div className="dropdown-content">
-                        <button onClick={() => setDiff(difficultyLevel[0])}>Easy</button>
-                        <button onClick={() => setDiff(difficultyLevel[1])}>Moderate</button>
-                        <button onClick={() => setDiff(difficultyLevel[2])}>Hard</button>
-                        <button onClick={() => setDiff(difficultyLevel[3])}>Madman</button>
+                        <button onClick={() => setDiff(0)}>Easy</button>
+                        <button onClick={() => setDiff(1)}>Moderate</button>
+                        <button onClick={() => setDiff(2)}>Hard</button>
+                        <button onClick={() => setDiff(3)}>Madman</button>
                     </div>
                 </div>
                 <input

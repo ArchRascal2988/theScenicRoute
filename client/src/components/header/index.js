@@ -3,7 +3,7 @@ import "./header.css"
 function Header() {
   return (
     <header className="header">
-      <a href='/'><img className='logo' src= 'https://i.imgur.com/dNMNWZh.jpg'></img></a>
+      <a href='/'><img className='logo' src= 'https://i.imgur.com/Om7OdFN.png'></img></a>
     </header>
   )
 }
