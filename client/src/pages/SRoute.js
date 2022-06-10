@@ -12,12 +12,12 @@ import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_ROUTE } from "../utils/queries";
 
 const SRoute= () =>{
-    const {routeId}= useParams();
+    const routeId= useParams();
     console.log(routeId);
     let routeData;
     const {loading, data}= useQuery(QUERY_SINGLE_ROUTE,{
         variables:{
-            "singleRouteId": routeId
+            "singleRouteId": "62a282aa4f7afa820c4eca4d"
         }})
 
     if(!loading){

@@ -9,11 +9,12 @@ import{ useQuery, useMutation } from '@apollo/client';
 
 
 function RouteInfo({info}) {
+  console.log(info);
   const {description, title, difficultyLevel, userId, tags, votes}= info;
   console.log(userId);
   const {data, loading}=useQuery(QUERY_USER,{
     variables:{
-      "userId": userId
+      userId: "62a28814de09d41766475e76"
     }});
 
     let username;

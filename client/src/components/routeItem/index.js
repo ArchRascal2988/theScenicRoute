@@ -5,36 +5,40 @@ import { Link } from 'react-router-dom';
 
 const RouteItem = ({ userRoutes }) => {
 
-  const upVote = async (vote) => {
-    const [createVote, { error }] = useMutation(UPVOTE);
-    try {
-      await createVote({
-        variables: { _id: id, vote: vote },
-      });
-    } catch (err) {
-      console.error(error);
-    }
-  }
+  // const [createVote, { error }] = useMutation(UPVOTE);
 
-    const downVote = async (vote) => {
-      const [createVote, { error }] = useMutation(DOWNVOTE);
-      try {
-        await createVote({
-          variables: { _id: id, vote: vote },
-        });
-      } catch (err) {
-        console.error(error);
-      }
-    }
+  // const [createVote, { error }] = useMutation(DOWNVOTE);
+
+
+  // const upVote = async (vote) => {
+
+  //   try {
+  //     await createVote({
+  //       variables: { _id: id, vote: vote },
+  //     });
+  //   } catch (err) {
+  //     console.error(error);
+  //   }
+  // }
+
+  //   const downVote = async (vote) => {
+  //     try {
+  //       await createVote({
+  //         variables: { _id: id, vote: vote },
+  //       });
+  //     } catch (err) {
+  //       console.error(error);
+  //     }
+  //   }
 
 
   return (
     // will route to single route page
   <li>
-    <Link className="btn" to={`/route/${route.id}`}>
-      <h2>{userRoutes.title}</h2>
-      <button className="btn btn-info" onClick={() => upVote(0)}>👍</button>
-      <button className="btn btn-info" onClick={() => downVote(0)}>👎</button>
+    <Link className="btn" to={'/'}>
+      <h2>ex title</h2>
+      <button className="btn btn-info" >👍</button>
+      <button className="btn btn-info" >👎</button>
       </Link>
   </li>
   )
