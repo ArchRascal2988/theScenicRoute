@@ -1,5 +1,5 @@
 import React from "react";
-import "./createRoute.css"
+
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
@@ -125,14 +125,10 @@ const finiHandler= (e) =>{
 };
 
   return (
-    <div className="blah">
-      <div><h1>Create A Map</h1></div>
-        {/* <section className="controls"> <p>Controls: Bar on top right to change edit mode. Click to add a point, double click to finalize a route, and click the button when all finished.</p></section> */}
-        <section ref={mapContainer} className="map-container createMap" />
-        <button className="routeButton"onClick={finiHandler}>All finished?</button>
-        <div className="formStuff">
-            <form className="route-form" onSubmit={handleSubmit}>
-            <input
+    <div>
+        <div ref={mapContainer} className="map-container createMap" />
+        <button onClick={finiHandler}>All finished?</button>
+        <input
                 type="text"
                 placeholder="Title of Route"
                 value={title}
@@ -140,6 +136,7 @@ const finiHandler= (e) =>{
                 className="route-title"
                 onChange={(event) => setTitle(event.target.value)}
             ></input>
+            <form className="route-form" onSubmit={handleSubmit}>
                 <div className="dropdown">
                     <button className={`dropbtn ${difficulty}`}></button>
                     <div className="dropdown-content">
@@ -179,8 +176,7 @@ const finiHandler= (e) =>{
                 </div>
                 <button className="bucket-button">Create Route</button>
             </form>
-            </div>
-            </div>
+    </div>
     
   )
     
