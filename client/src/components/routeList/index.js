@@ -1,7 +1,14 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import RouteItem from '../routeInfo/index'
-import { QUERY_USER_ROUTES } from "../../utils/queries";
+
+
+import { QUERY_USER_ROUTES, QUERY_ROUTES } from "../../utils/queries";
+import Auth from '../../utils/auth';
+
+
+
+
 
 // Accept an array of routes as a prop
 const RouteList = () => {

@@ -1,63 +1,35 @@
 import React from "react";
 
+import { useRouteContext } from "../../utils/RouteProvider";
+
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-import { ADD_ROUTE } from "../../utils/mutations"
-import { useMutation } from '@apollo/client';
-
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
 
 
-const CreateMap= (props)=>{
-    //map variables
+const CreateMap= ()=>{
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
-    const[geoData, setGData] = useState({});
+    const [geoData, setGData]= useState({});
 
-    //form variables
+    
     const [difficulty, setDiff] = useState("");
-    //these will be added in the database
     const difficultyLevel = ["easy", "moderate", "hard", "madman"]
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [tags, setTags] = useState("");
     // const [notes, setNotes] = useState("");
-    // const [points, setPoints] =useState("waiting on points...");
+     
 
-    const [addRoute, { error }] = useMutation(ADD_ROUTE);
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const rawData = {
-        "userId": "62a0de824611b77c9f324997",
-        // geometry: geoData.features[0].geometry.coordinates,
-        "geometry":[[111.12341,222.1234],
-    [123.234,123.44]],
-        "description": "description",
-        "title": "god",
-        "difficultyLevel": 1,
-        "tags": "help",
-        }
-        console.log(rawData)
-        try{
-        const {data} = await addRoute({
-            variables:{...rawData
-            }
-        });
-        console.log(data)
-        setTitle('');
-        setDiff('');
-        setDescription('');
-        setTags('');
-    }catch(err){
-        console.error(err)
-    }
-    }
+    const {addGeometry, currentRoute} = useRouteContext();
+    const[coords, setCoords] = useState([[],[]]);
+
 
     useEffect(() => {
         if (map.current) return;
@@ -115,15 +87,38 @@ const CreateMap= (props)=>{
 
     });
 
+const handleSubmit = async (e) => {
+        e.preventDefault();
+        const rawData = {
+        "userId": "62a0de824611b77c9f324997",
+        // geometry: geoData.features[0].geometry.coordinates,
+        "geometry":[[111.12341,222.1234],
+    [123.234,123.44]],
+        "description": "description",
+        "title": "god",
+        "difficultyLevel": 1,
+        "tags": "help",
+        }
+        console.log(rawData)
+        try{
+        setTitle('');
+        setDiff('');
+        setDescription('');
+        setTags('');
+    }catch(err){
+        console.error(err)
+    }
+}
 
 const finiHandler= (e) =>{
   e.preventDefault();
   
-//   let routePoints = geoData.features[0].geometry.coordinates.map((e)=>{
-//       <option key={e}>{e}</option>
-//   })
+  let routePoints = geoData.features[0].geometry.coordinates.map((e)=>{
+      <option key={e}>{e}</option>
+  })
+  console.log(routePoints);
 };
-
+    
   return (
     <div>
         <div ref={mapContainer} className="map-container createMap" />
@@ -176,8 +171,10 @@ const finiHandler= (e) =>{
                 </div>
                 <button className="bucket-button">Create Route</button>
             </form>
-    </div>
-    
+
+
+        </div>
+
   )
     
 }

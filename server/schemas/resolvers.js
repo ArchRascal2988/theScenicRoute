@@ -50,8 +50,9 @@ const resolvers = {
         },
         addRoute: async (parent, args) => {
             const createRoute = await Route.create(args);
+            console.log(createRoute);
             const addToUser = await User.findOneAndUpdate(
-                args.routeId, { $addToSet: { routes: createRoute } }, {new: true}
+                args.userId, { $addToSet: { routes: createRoute } }, {new: true}
             )
             return { createRoute, addToUser }
         },

@@ -2,6 +2,7 @@ import React from "react";
 
 import { QUERY_USER } from "../../utils/queries";
 import { UPVOTE, DOWNVOTE } from '../../utils/mutations';
+import {Icon} from '@iconify/react';
 
 
 import{ useQuery, useMutation } from '@apollo/client';
