@@ -12,16 +12,19 @@ footer {
 .footBtn{
     background-color: #6B985D;
     text-decoration: none;
-    margin:8%;
-    padding: 20%;
+    margin:5%;
+    padding: 9%;
     border-radius: 6px;
   }
 section.footBtnsContainer{
     margin: 0;
     border: none;
+    display: flex;
 }
 .aboutUs{
-    padding: 2%;
+    padding: 1%;
     background-color: var(--green);
     border-radius: 6px;
+    text-decoration: none;
 }
+

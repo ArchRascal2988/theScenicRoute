@@ -35,7 +35,7 @@ function Footer(props) {
                     <a className="footBtn" href='/me'>Dashboard</a>
                 </section>
                 <h1>The Scenic Route</h1>
-                <a href='/about'>About Us</a>
+                <a className="aboutUs"href='/about'>About Us</a>
             </footer>
           );
     }else{
