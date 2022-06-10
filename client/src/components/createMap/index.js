@@ -128,7 +128,6 @@ const finiHandler= (e) =>{
     <div>
         <div ref={mapContainer} className="map-container createMap" />
         <button onClick={finiHandler}>All finished?</button>
-        <section className="controls"> <p>Controls: Bar on top right to change edit mode. Click to add a point, double click to finalize a route, and click the button when all finished.</p></section>
         <input
                 type="text"
                 placeholder="Title of Route"

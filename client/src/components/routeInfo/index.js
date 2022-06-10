@@ -1,6 +1,4 @@
 import React from "react";
-import "./routeInfo.css"
-import { Icon } from '@iconify/react';
 
 import { QUERY_USER } from "../../utils/queries";
 import { UPVOTE, DOWNVOTE } from '../../utils/mutations';

@@ -4,46 +4,40 @@ import Header from '../components/header/index';
 import Footer from '../components/footer/index';
 import Map from '../components/map/index';
 import RouteList from '../components/routeList/index';
-import { QUERY_ME, QUERY_ROUTES, QUERY_USER } from "../utils/queries";
+import { QUERY_ROUTES, QUERY_USER } from "../utils/queries";
+import Auth from '../utils/auth';
 
 
 const Dash = () => {
+    const userData= Auth.getUser();
 
-    const { loading, data } = useQuery(QUERY_ME);
+    const {data, loading}=useQuery(QUERY_USER,{
+        variables:{
+          "userId": userData.data._id
+        }});
 
-    const user = data?.me || {};
-    // navigate to personal profile page if username is yours
-    // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    //   return <Navigate to="/me" />;
-    // }
-    console.log(user)
+    const user = data?.user || {};
 
     if (loading) {
         return <div>Loading...</div>;
     }
 
-    if (!user?.username) {
-        return (
-            <h4>
-                You need to be logged in to see this. Use the navigation links above to
-                sign up or log in!
-            </h4>
-        );
-    }
-    console.log(user);
-
     return (
         <main>
 
             <Header />
-            <h1>Welcome </h1>
+            <h1>Welcome {user.username}</h1>
             <Map />
-            <ui>
+            <section>
+                <a href='/create'>Create A Route +</a>
+            <ul>
                 <li>Route 1</li>
                 <li>Route 2</li>
                 <li>Route 3</li>
                 <li>Route 4</li>
-            </ui>
+            </ul>
+            </section>
+            
             <Footer />
         </main>
     )
