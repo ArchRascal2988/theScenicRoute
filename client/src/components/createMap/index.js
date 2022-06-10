@@ -1,10 +1,8 @@
 import React from "react";
-<<<<<<< HEAD
 import { useRouteContext } from "../../utils/RouteProvider";
 
-=======
 import "./createRoute.css"
->>>>>>> 6c39042fb739db9a94cbbcb3618c1dd4f7060d1c
+
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
@@ -91,7 +89,7 @@ const finiHandler= (e) =>{
   })
   console.log(routePoints);
 };
-
+    
   return (
     <div className="blah">
       <div><h1>Create A Map</h1></div>

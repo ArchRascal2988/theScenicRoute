@@ -25,7 +25,6 @@ query user(id: $userId) {
     email
     password
   }
-}
 `;
 
 //this is for the homepage map...
