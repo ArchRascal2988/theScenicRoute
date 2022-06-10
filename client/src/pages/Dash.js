@@ -30,8 +30,6 @@ const Dash = () => {
             <Map />
             <section>
             <RouteList />
-                <a href='/create'>Create A Route +</a>
-            
             </section>
             
             <Footer />

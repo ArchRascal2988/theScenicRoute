@@ -80,7 +80,7 @@ const Map= (props)=>{
                 .setHTML(`<h2>{route.title}</h2>
                           <h2>{route.difficulty}</h2>
                           <h2>{route.votes}</h2>  
-                          <h3><a href="/route/62a26587be4ee9e47c3edf5e">see more</a></h3>`) 
+                          <h3><a href="/route/62a282aa4f7afa820c4eca4d">see more</a></h3>`) 
                 .addTo(map.current);
                 });
 

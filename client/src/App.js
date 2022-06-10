@@ -54,10 +54,6 @@ function App() {
             element={<Dash />}
           />
           <Route
-            path="/dashboard/:username"
-            element={<Dash />}
-          />
-          <Route
             path="/create"
             element={<Create />}
           />

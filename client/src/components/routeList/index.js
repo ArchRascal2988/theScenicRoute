@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import RouteItem from '../routeInfo/index'
+import RouteItem from '../routeItem/index'
 
 
 import { QUERY_USER_ROUTES, QUERY_ROUTES } from "../../utils/queries";
@@ -12,7 +12,7 @@ import Auth from '../../utils/auth';
 
 // Accept an array of routes as a prop
 // Accept an array of routes as a prop
-const RouteList = () => {
+const RouteList = ({routes}) => {
 
   const userData= Auth.getUser();
 
@@ -21,15 +21,24 @@ const RouteList = () => {
       "userId": userData.data._id
     }})
   let honeymoonRoutes;
-  if(loading){
+  if(!loading){
     honeymoonRoutes = data?.userRoutes || ['error']
     console.log(honeymoonRoutes);
   }
 
   // Create a list of rendered IssueItems by using the map method on `routes`
-  const renderedList = honeymoonRoutes.map((route) => {
+
+  if(loading){
+    return(
+      <div>
+          <h1>loading...</h1>
+      </div>
+    )
+  }
+
+  const renderedList = honeymoonRoutes.map((route, index) => {
     return (
-          <RouteItem key={route.id} route={route.title} />
+          <RouteItem key={index} route={route} />
           )
   });
 
