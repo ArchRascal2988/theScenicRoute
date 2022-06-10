@@ -20,7 +20,8 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@iconify/react": "^3.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
