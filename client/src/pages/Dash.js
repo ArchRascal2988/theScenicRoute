@@ -29,13 +29,9 @@ const Dash = () => {
             <h1>Welcome {user.username}</h1>
             <Map />
             <section>
+            <RouteList />
                 <a href='/create'>Create A Route +</a>
-            <ul>
-                <li>Route 1</li>
-                <li>Route 2</li>
-                <li>Route 3</li>
-                <li>Route 4</li>
-            </ul>
+            
             </section>
             
             <Footer />
