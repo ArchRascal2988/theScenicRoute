@@ -11,10 +11,9 @@ const Create = () =>{
     return(
         <main>
             <Header />
-            
+
             <RouteProvider>
                 <CreateMap />
-            
             </RouteProvider>
         
             <Footer />

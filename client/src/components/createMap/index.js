@@ -7,6 +7,10 @@ import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
+import {useMutation} from '@apollo/client';
+import { ADD_ROUTE } from "../../utils/mutations";
+import Auth from '../../utils/auth';
+
 import "./createRoute.css"
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiNGdlY2MwIiwiYSI6ImNsM3lqaXlkaTA3cXkzaGxzaHRhbGJzaGkifQ.7FyvUEOWv9_GOlh0iSATfA';
@@ -19,6 +23,7 @@ const CreateMap= ()=>{
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
     const [geoData, setGData]= useState({});
+    const [addRoute, { error, data }] = useMutation(ADD_ROUTE);
 
     
     const [difficulty, setDiff] = useState("");
@@ -31,6 +36,9 @@ const CreateMap= ()=>{
 
     const {addGeometry, currentRoute} = useRouteContext();
     const[coords, setCoords] = useState([[],[]]);
+    const userData= Auth.getUser();
+    const userId= userData.data._id;
+    console.log(userId);
 
 
     useEffect(() => {
@@ -91,39 +99,35 @@ const CreateMap= ()=>{
 
 const handleSubmit = async (e) => {
         e.preventDefault();
-        const rawData = {
-        "userId": "62a0de824611b77c9f324997",
-        // geometry: geoData.features[0].geometry.coordinates,
-        "geometry":[[111.12341,222.1234],
-    [123.234,123.44]],
-        "description": "description",
-        "title": "god",
-        "difficultyLevel": 1,
-        "tags": "help",
-        }
-        console.log(rawData)
-        try{
-        setTitle('');
-        setDiff('');
-        setDescription('');
-        setTags('');
-    }catch(err){
-        console.error(err)
-    }
+        console.log(coords, title, description, tags, difficulty)
+        try {
+            const { data } = await addRoute({
+              variables:{
+                userId: userId,
+                geometry: coords,
+                description: description,
+                difficultyLevel: difficulty,
+                title: title,
+                tags: tags
+              }
+            });
+
+          } catch (e) {
+            console.error(e);
+          }
 }
 
 const finiHandler= (e) =>{
   e.preventDefault();
   
-  let routePoints = geoData.features[0].geometry.coordinates.map((e)=>{
-      <option key={e}>{e}</option>
-  })
-  console.log(routePoints);
+  let routePoints = geoData.features[0].geometry.coordinates;
+  setCoords(routePoints);
+  
 };
     
   return (
     <div className="blah">
-        <div><h1>Create A Map</h1></div>
+        <div><h1>Create A Route</h1></div>
         <section ref={mapContainer} className="map-container createMap" />
         <button className="routeButton" onClick={finiHandler}><h3>All finished?</h3></button>
         <div className="formStuff">
@@ -139,10 +143,10 @@ const finiHandler= (e) =>{
             ></input>
                 <div className="dropdown">
                     <div className="dropdown-content">
-                        <button onClick={() => setDiff(difficultyLevel[0])}>Easy</button>
-                        <button onClick={() => setDiff(difficultyLevel[1])}>Moderate</button>
-                        <button onClick={() => setDiff(difficultyLevel[2])}>Hard</button>
-                        <button onClick={() => setDiff(difficultyLevel[3])}>Madman</button>
+                        <button onClick={() => setDiff(0)}>Easy</button>
+                        <button onClick={() => setDiff(1)}>Moderate</button>
+                        <button onClick={() => setDiff(2)}>Hard</button>
+                        <button onClick={() => setDiff(3)}>Madman</button>
                     </div>
                 </div>
                 <input

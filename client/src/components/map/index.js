@@ -12,8 +12,8 @@ const Map= (props)=>{
     const def= props.data;
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-70.9);
-    const [lat, setLat] = useState(42.35);
+    const [lng, setLng] = useState(28.5384);
+    const [lat, setLat] = useState(81.3789);
     const [zoom, setZoom] = useState(9);
     const [geoData, setGeoData]= useState(def);
 
