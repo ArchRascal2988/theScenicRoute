@@ -49,7 +49,7 @@ In order to accomplish the challenge, the following steps were done:
 The project was uploaded to [GitHub](https://github.com/) at the following repository: 
 https://github.com/ArchRascal2988/theScenicRoute.git
 
-You can access the deployed application with the Heroku link: 
+You can access the deployed application with the Heroku link: https://protected-basin-30309.herokuapp.com/  
 
 To install the project follow these steps:
 
