@@ -42,7 +42,7 @@ type Query {
     me: User
     routes:[Route]
     singleRoute(id: ID!): Route
-    userRoutes(user: ID!): User
+    userRoutes(userId: ID!): Route
 }
 
 type Mutation {

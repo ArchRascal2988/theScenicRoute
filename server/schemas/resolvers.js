@@ -21,8 +21,8 @@ const resolvers = {
             return await Route.findById(args.id).populate('notes')
         },
         //find all user routes by userId
-        userRoutes: async (parent, { userId }) => {
-            return await Route.findById({_id: userId}).populate('notes')
+        userRoutes: async (parent, args) => {
+            return await Route.findOne({userId: args.userId}).populate('notes')
         }
     },
     Mutation: {
@@ -50,18 +50,17 @@ const resolvers = {
         },
         addRoute: async (parent, args) => {
             const createRoute = await Route.create(args);
-            console.log(createRoute);
             const addToUser = await User.findOneAndUpdate(
                 args.userId, { $addToSet: { routes: createRoute } }, {new: true}
             )
-            return { createRoute, addToUser }
+            return createRoute;
         },
         addNote: async (parent, args) => {
             const createNote = await Note.create(args)
             const addToRoute = await Route.findOneAndUpdate(
                 args.routeId, { $addToSet: { notes: createNote._id }},{new: true}
             )
-            return { createNote, addToRoute }
+            return createNote;
         },
         //+1 the vote count on a specific route
         upVote: async (parent, args) => {
