@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const noteSchema = new Schema(
     {
-        routePoints:
+        coordinates:
             {
             type: [Number],
             required: true

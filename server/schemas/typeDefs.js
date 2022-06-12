@@ -29,7 +29,7 @@ type Route {
 
 type Note {
   _id: ID
-  routePoints: [Int]
+  routePoints: [Float]
   image:String
   content:String!
   routeId:Route!
@@ -64,11 +64,11 @@ type Mutation {
       tags: String
       ): Route
     addNote(
-      routePoints: [Int]
+      routePoints: [Float]
       image: String
       content: String!
       routeId: String!
-      ): Route
+      ): Note
     upVote(
       routeId: String!, 
       ): Route
