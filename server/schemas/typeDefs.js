@@ -29,7 +29,7 @@ type Route {
 
 type Note {
   _id: ID
-  routePoints: [Int]
+  routePoints: [Float]
   image:String
   content:String!
   routeId:Route!
@@ -42,7 +42,7 @@ type Query {
     me: User
     routes:[Route]
     singleRoute(id: ID!): Route
-    userRoutes(user: ID!): User
+    userRoutes(userId: ID!): Route
 }
 
 type Mutation {
@@ -64,11 +64,11 @@ type Mutation {
       tags: String
       ): Route
     addNote(
-      routePoints: [Int]
+      routePoints: [Float]
       image: String
       content: String!
       routeId: String!
-      ): Route
+      ): Note
     upVote(
       routeId: String!, 
       ): Route
